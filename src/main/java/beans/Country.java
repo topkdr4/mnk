@@ -1,6 +1,4 @@
 package beans;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 
 
@@ -11,17 +9,44 @@ import java.nio.file.Paths;
  * */
 
 public class Country {
-    
-    private final int id;
-    private final String name;
-    private final Path pathToFile;
-    
-    
-    public Country(String name, int id, String pathToFile) {
-        this.name = name;
-        this.id = id;
-        this.pathToFile = Paths.get(pathToFile);
+
+    private int id;
+    private String name;
+    private String url;
+
+
+    public Country() {
     }
-    
-    
+
+
+    public int getId() {
+        return id;
+    }
+
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public String getUrl() {
+        return url;
+    }
+
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+
 }

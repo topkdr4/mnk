@@ -1,6 +1,11 @@
 package services;
-import core.beans.Country;
+import beans.Country;
+import exceptions.ServiceException;
+import exceptions.SystemError;
 
+import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -12,24 +17,24 @@ import java.util.List;
  * */
 
 public final class CountryService {
-    
+
     private CountryService() {
         
     }
     
     
-    public static List<Country> getCountries() {
-        throw new UnsupportedOperationException();
+    public static List<Country> getCountries() throws ServiceException {
+        throw new SystemError(1, "Unsupported operation");
     }
     
     
-    public static Country register() {
-        throw new UnsupportedOperationException();
+    public static Country register(Country country) throws SystemError {
+        throw new SystemError(1, "Unsupported operation");
     }
     
     
-    public void remove(Country country) {
-        throw new UnsupportedOperationException();
+    public void remove(Country country) throws SystemError {
+        throw new SystemError(1, "Unsupported operation");
     }
     
 }

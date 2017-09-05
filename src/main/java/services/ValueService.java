@@ -1,7 +1,7 @@
 package services;
-import core.beans.Country;
-import core.beans.Index;
-import core.beans.Value;
+import beans.Country;
+import beans.Index;
+import beans.Value;
 
 import java.util.List;
 
