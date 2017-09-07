@@ -29,11 +29,16 @@ public final class HandlerServlets extends HttpServlet {
 
     private static final Map<String, HttpHandler> SERVLETS = new HashMap<>();
     private static final Logger log = Logger.getLogger(HandlerServlets.class);
-
+/*
     static {
         SERVLETS.put("/country/list", new CountryServletList());
         SERVLETS.put("/country/add",  new CountryServletAdd());
         SERVLETS.put("/country/remove", new CountryServletRemove());
+    }*/
+
+    public static void registerServlets(String url, HttpHandler handler) {
+        SERVLETS.put(url, handler);
+        log.info(handler.getClass().getCanonicalName() + " register by url = " + url);
     }
 
     @Override

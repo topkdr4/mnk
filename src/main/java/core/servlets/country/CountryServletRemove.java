@@ -2,6 +2,7 @@ package core.servlets.country;
 import beans.Country;
 import core.HttpHandler;
 import core.result.SimpleAnswer;
+import core.servlets.HttpUrl;
 import exceptions.ServiceException;
 import org.apache.log4j.Logger;
 import services.CountryService;
@@ -17,6 +18,7 @@ import java.util.List;
 /**
  * Ветошкин А.В. РИС-16бзу
  * */
+@HttpUrl(url = "/country/remove")
 public class CountryServletRemove implements HttpHandler {
     
     private static final Logger log = Logger.getLogger(CountryServletList.class);

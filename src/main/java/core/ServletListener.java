@@ -1,9 +1,15 @@
 package core;
+import core.servlets.HttpUrl;
 import org.apache.log4j.Logger;
+import util.Util;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Set;
 
 
 
@@ -20,7 +26,23 @@ public class ServletListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        
+        try {
+            String cc = servletContextEvent.getServletContext().getRealPath("/");
+            Path appPath = Paths.get(cc, "WEB-INF", "classes");
+            Set<Class<?>> classes = Util.getClasses(appPath, clazz -> {
+                return clazz.isAnnotationPresent(HttpUrl.class) && HttpHandler.class.isAssignableFrom(clazz);
+            });
+
+            for (Class<?> aClass : classes) {
+                HttpUrl httpUrl = aClass.getAnnotation(HttpUrl.class);
+                String url = httpUrl.url();
+                HttpHandler handler = (HttpHandler) aClass.newInstance();
+                HandlerServlets.registerServlets(url, handler);
+            }
+
+        } catch (Exception e) {
+            log.fatal(e.getMessage(), e);
+        }
     }
 
 

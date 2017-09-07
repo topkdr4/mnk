@@ -1,6 +1,7 @@
 package core.servlets.country;
 import beans.Country;
 import core.result.SimpleAnswer;
+import core.servlets.HttpUrl;
 import exceptions.ServiceException;
 import services.CountryService;
 
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Ветошкин А.В. РИС-16бзу
  * */
+@HttpUrl(url = "/country/add")
 public class CountryServletAdd implements core.HttpHandler {
 
     @Override
