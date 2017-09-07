@@ -3,9 +3,6 @@ import beans.Country;
 import exceptions.ServiceException;
 import exceptions.SystemError;
 
-import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -33,7 +30,7 @@ public final class CountryService {
     }
     
     
-    public void remove(Country country) throws SystemError {
+    public static void remove(Country country) throws SystemError {
         throw new SystemError(1, "Unsupported operation");
     }
     

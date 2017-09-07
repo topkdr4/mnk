@@ -1,8 +1,8 @@
 package core;
 import core.result.SimpleAnswer;
-import core.servlets.CountryServletAdd;
-import core.servlets.CountryServletList;
-import core.servlets.CountryServletRemove;
+import core.servlets.country.CountryServletAdd;
+import core.servlets.country.CountryServletList;
+import core.servlets.country.CountryServletRemove;
 import exceptions.ServiceException;
 import org.apache.log4j.Logger;
 import util.Util;
@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 
 
@@ -27,7 +27,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @WebServlet("/")
 public final class HandlerServlets extends HttpServlet {
 
-    private static final Map<String, HttpHandler> SERVLETS = new ConcurrentHashMap<>();
+    private static final Map<String, HttpHandler> SERVLETS = new HashMap<>();
     private static final Logger log = Logger.getLogger(HandlerServlets.class);
 
     static {

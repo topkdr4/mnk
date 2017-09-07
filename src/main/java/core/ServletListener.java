@@ -3,8 +3,7 @@ import org.apache.log4j.Logger;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-
-
+import javax.servlet.annotation.WebListener;
 
 
 
@@ -13,6 +12,7 @@ import javax.servlet.ServletContextListener;
 /**
  * Ветошкин А.В. РИС-16бзу
  * */
+@WebListener
 public class ServletListener implements ServletContextListener {
 
     private static final Logger log = Logger.getLogger(ServletListener.class);
@@ -20,7 +20,7 @@ public class ServletListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-
+        
     }
 
 

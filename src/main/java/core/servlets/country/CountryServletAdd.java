@@ -1,8 +1,8 @@
-package core.servlets;
-import core.HttpHandler;
+package core.servlets.country;
+import beans.Country;
 import core.result.SimpleAnswer;
 import exceptions.ServiceException;
-import org.apache.log4j.Logger;
+import services.CountryService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,12 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Ветошкин А.В. РИС-16бзу
  * */
-public class CountryServletRemove implements HttpHandler {
-
-    private static final Logger log = Logger.getLogger(CountryServletList.class);
+public class CountryServletAdd implements core.HttpHandler {
 
     @Override
     public SimpleAnswer execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceException {
+        Country country = new Country();
+        CountryService.register(country);
         return SimpleAnswer.EMPTY;
     }
 }

@@ -2,7 +2,7 @@ package exceptions;
 /**
  * Ветошкин А.В. РИС-16бзу
  * */
-public class ServiceException extends Throwable {
+public class ServiceException extends Exception {
 
 
     private static final long serialVersionUID = -5583270742114410595L;
