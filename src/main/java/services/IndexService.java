@@ -1,5 +1,6 @@
 package services;
 import beans.Index;
+import exceptions.ServiceException;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public final class IndexService {
     }
 
 
-    public static Index register() {
+    public static Index register(String futureName) throws ServiceException{
         throw new UnsupportedOperationException();
     }
 
