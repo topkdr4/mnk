@@ -1,8 +1,5 @@
 package core;
 import core.result.SimpleAnswer;
-import core.servlets.country.CountryServletAdd;
-import core.servlets.country.CountryServletList;
-import core.servlets.country.CountryServletRemove;
 import exceptions.ServiceException;
 import org.apache.log4j.Logger;
 import util.Util;
@@ -29,17 +26,13 @@ public final class HandlerServlets extends HttpServlet {
 
     private static final Map<String, HttpHandler> SERVLETS = new HashMap<>();
     private static final Logger log = Logger.getLogger(HandlerServlets.class);
-/*
-    static {
-        SERVLETS.put("/country/list", new CountryServletList());
-        SERVLETS.put("/country/add",  new CountryServletAdd());
-        SERVLETS.put("/country/remove", new CountryServletRemove());
-    }*/
+
 
     public static void registerServlets(String url, HttpHandler handler) {
         SERVLETS.put(url, handler);
         log.info(handler.getClass().getCanonicalName() + " register by url = " + url);
     }
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -65,6 +58,7 @@ public final class HandlerServlets extends HttpServlet {
         log.info("request to " + req.getRequestURI());
         HttpHandler handler = SERVLETS.get(req.getRequestURI());
         if (handler == null) {
+            log.warn("Handler by " + req.getRequestURI() + " not found");
             resp.sendRedirect("404.jsp");
             return;
         }

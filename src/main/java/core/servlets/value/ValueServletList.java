@@ -14,6 +14,7 @@ import services.ValueService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 import java.util.List;
 
 
@@ -73,8 +74,13 @@ public class ValueServletList implements HttpHandler {
         
         if (findIndex == null)
             throw new ServiceException("Index not found");
-        
-        List<Value> valueList = ValueService.getValues(findCountry, findIndex);
+
+        List<Value> valueList = null;
+        try {
+            valueList = ValueService.getValues(findCountry, findIndex);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return new SimpleAnswer(valueList);
     }
 }

@@ -27,7 +27,7 @@ public class IndexServletAdd implements HttpHandler {
     @Override
     public SimpleAnswer execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceException {
         String futureName = req.getParameter("name");
-        Index index = IndexService.register(futureName);
+        IndexService.register(futureName);
         return SimpleAnswer.EMPTY;
     }
 }
