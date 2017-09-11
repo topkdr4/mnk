@@ -34,7 +34,7 @@ public final class ValueService {
 
     public static void add(Country country, Index index, Value value) throws ServiceException {
         DataSource source = DBSource.getDataSource();
-        final String sql = "{call add_value(?, ?, ?, ?)}";
+        final String sql = "{call add_values(?, ?, ?, ?)}";
         try (Connection connection = source.getConnection()) {
             CallableStatement statement = connection.prepareCall(sql);
             
@@ -44,14 +44,10 @@ public final class ValueService {
             statement.setDouble(pos++, value.getValueX());
             statement.setDouble(pos++, value.getValueY());
             
-            ResultSet set = statement.executeQuery();
-            
-            if (set.next()) {
-                int uid = set.getInt(1);
-                value.setUid(uid);
-            }
-                        
+            statement.execute();
+
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new ServiceException(e.getErrorCode(), e.getMessage());
         }
     }
@@ -59,14 +55,16 @@ public final class ValueService {
 
     public static List<Value> getValues(Country country, Index index) throws ServiceException {
         DataSource source = DBSource.getDataSource();
-        final String sql = "{call get_values(?, ?)}";
+        final String sql = "{? = call get_values(?, ?)}";
         try (Connection connection = source.getConnection()) {
             List<Value> result = new ArrayList<>();
-
+            connection.setAutoCommit(false);
             CallableStatement statement = connection.prepareCall(sql);
-            statement.setInt(1, country.getId());
-            statement.setInt(2, index.getUid());
-            statement.registerOutParameter(3, Types.OTHER);
+
+            statement.registerOutParameter(1, Types.OTHER);
+            statement.setInt(2, country.getId());
+            statement.setInt(3, index.getUid());
+
             
             log.info(sql);
             statement.execute();
@@ -77,6 +75,7 @@ public final class ValueService {
                 result.add(value);
             }
 
+            set.close();
             return result;
         } catch (SQLException e) {
             throw new ServiceException(e.getErrorCode(), e.getMessage());
@@ -92,7 +91,7 @@ public final class ValueService {
     
     public static void updateValue(Value value) throws ServiceException {
         DataSource source = DBSource.getDataSource();
-        final String sql = "{call update_value(?, ?, ?)}";
+        final String sql = "{call update_values(?, ?, ?)}";
         try (Connection connection = source.getConnection()) {
             CallableStatement statement = connection.prepareCall(sql);
             
@@ -110,7 +109,7 @@ public final class ValueService {
 
     public static void remove(Value value) throws ServiceException {
         DataSource source = DBSource.getDataSource();
-        final String sql = "{call remove_value(?)}";
+        final String sql = "{call remove_values(?)}";
         try (Connection connection = source.getConnection()) {
             CallableStatement statement = connection.prepareCall(sql);
             statement.setInt(1, value.getUid());

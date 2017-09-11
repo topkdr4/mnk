@@ -18,6 +18,10 @@ public class Country {
     public Country() {
     }
 
+    public Country(int uid) {
+        this.id = uid;
+    }
+
 
     public int getId() {
         return id;

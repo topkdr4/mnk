@@ -13,6 +13,11 @@ public class Index {
         this.uid = uid;
         this.name = name;
     }
+
+    public Index(int uid) {
+        this.uid = uid;
+        this.name = "";
+    }
     
     
     public int getUid() {
