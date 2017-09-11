@@ -3,7 +3,7 @@ package beans;
  * Ветошкин А.В. РИС-16бзу  
  * */
 
-public class Value implements Comparable<Value> {
+public class Value {
     
     private final double valueY;
     private final double valueX;
@@ -13,6 +13,12 @@ public class Value implements Comparable<Value> {
     public Value(double valueX, double valueY) {
         this.valueX = valueX;
         this.valueY = valueY;
+    }
+    
+    public Value (int uid) {
+        this.uid = uid;
+        this.valueX = 0d;
+        this.valueY = 0d;
     }
     
     
@@ -31,8 +37,8 @@ public class Value implements Comparable<Value> {
     }
     
     
-    @Override
-    public int compareTo(Value o) {
-        return Double.compare(valueX, o.valueX);
+    public void setUid(int uid) {
+        this.uid = uid;
     }
+    
 }

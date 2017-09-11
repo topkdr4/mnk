@@ -1,9 +1,6 @@
 package analytics;
-import beans.Country;
-import beans.Index;
 import beans.ResultValue;
 import beans.Value;
-import services.ValueService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,13 +20,6 @@ public class Analytics {
     }
 
 
-/*    public static List<ResultValue> minSquare(Country country, Index index) {
-        List<Value> values = ValueService.getValues(country, index);
-        values.sort(Value::compareTo);
-        return minSquare(values);
-    }
-*/
-
     public static List<ResultValue> minSquare(List<Value> list) {
         double midX = getSumX(list) / list.size();
         double midY = getSumY(list) / list.size();
@@ -38,7 +28,7 @@ public class Analytics {
 
         List<ResultValue> result = new ArrayList<>();
         for (Value stdValue : list)
-            result.add(new ResultValue(stdValue.getValueX(), a + b * stdValue.getValueX()));
+            result.add(new ResultValue(stdValue.getValueX(), a + b * stdValue.getValueX(), stdValue.getUid()));
 
         return result;
     }
