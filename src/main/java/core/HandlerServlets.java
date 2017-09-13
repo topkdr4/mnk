@@ -21,16 +21,18 @@ import java.util.Map;
 /**
  * Ветошкин А.В. РИС-16бзу
  * */
-@WebServlet("/")
+@WebServlet("/webapi/*")
 public final class HandlerServlets extends HttpServlet {
 
     private static final Map<String, HttpHandler> SERVLETS = new HashMap<>();
     private static final Logger log = Logger.getLogger(HandlerServlets.class);
+    private static final String PREFIX = "/webapi";
 
 
     public static void registerServlets(String url, HttpHandler handler) {
-        SERVLETS.put(url, handler);
-        log.info(handler.getClass().getCanonicalName() + " register by url = " + url);
+        String toUrl = PREFIX + url;
+        SERVLETS.put(toUrl, handler);
+        log.info(handler.getClass().getCanonicalName() + " register by url = " + toUrl);
     }
 
 
@@ -59,7 +61,6 @@ public final class HandlerServlets extends HttpServlet {
         HttpHandler handler = SERVLETS.get(req.getRequestURI());
         if (handler == null) {
             log.warn("Handler by " + req.getRequestURI() + " not found");
-            resp.sendRedirect("404.jsp");
             return;
         }
 
