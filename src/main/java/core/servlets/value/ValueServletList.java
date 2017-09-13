@@ -44,8 +44,8 @@ public class ValueServletList implements HttpHandler {
         int countryID;
         int indexID;
         try {
-            countryID = Integer.valueOf(countryUid);
-            indexID = Integer.valueOf(indexUid);
+            countryID = Integer.parseInt(countryUid);
+            indexID = Integer.parseInt(indexUid);
         } catch (NumberFormatException e) {
             throw new ServiceException(1, e.getMessage());
         }

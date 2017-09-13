@@ -19,13 +19,18 @@ import java.util.stream.Stream;
 /**
  * Ветошкин А.В. РИС-16бзу
  * */
-public final class Util {
+public class Util {
 
     private static final ObjectMapper mapper = new ObjectMapper();
     private static final String FILETYPE_CLASS = "class";
 
     static {
         mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+    }
+    
+    
+    private Util() {
+        
     }
 
 

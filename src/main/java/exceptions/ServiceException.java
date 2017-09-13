@@ -29,8 +29,15 @@ public class ServiceException extends Exception {
         this.errorCode = 0;
         this.errorText = message;
     }
-
-
+    
+    
+    public ServiceException(Exception e) {
+        super(e);
+        this.errorText = e.getMessage();
+        this.errorCode = -1;
+    }
+    
+    
     public int getErrorCode() {
         return errorCode;
     }

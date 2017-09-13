@@ -30,7 +30,7 @@ public class IndexServletRemove implements HttpHandler{
         String uid = req.getParameter("uid");
         int id;
         try {
-            id = Integer.valueOf(uid);
+            id = Integer.parseInt(uid);
         } catch (NumberFormatException e) {
             throw new ServiceException("incorrect format UID");
         }

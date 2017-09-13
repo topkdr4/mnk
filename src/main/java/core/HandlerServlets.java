@@ -39,7 +39,7 @@ public final class HandlerServlets extends HttpServlet {
         try {
             execute(req, resp);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.info(e);
         }
     }
 
@@ -49,7 +49,7 @@ public final class HandlerServlets extends HttpServlet {
         try {
             execute(req, resp);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.info(e);
         }
     }
 

@@ -25,13 +25,13 @@ public class ValueServletAnalytics implements HttpHandler {
     @Override
     public SimpleAnswer execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceException {
         try {
-            int countryUid = Integer.valueOf(req.getParameter("countryUid"));
-            int indexUid   = Integer.valueOf(req.getParameter("indexUid"));
+            int countryUid = Integer.parseInt(req.getParameter("countryUid"));
+            int indexUid   = Integer.parseInt(req.getParameter("indexUid"));
 
             List<ResultValue> result = ValueService.getResultValues(new Country(countryUid), new Index(indexUid));
             return new SimpleAnswer(result);
         } catch (NumberFormatException e) {
-            throw new ServiceException(e.getMessage());
+            throw new ServiceException(e);
         }
     }
 }

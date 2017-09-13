@@ -21,8 +21,12 @@ public class ValueServletRemove implements HttpHandler {
     
     @Override
     public SimpleAnswer execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceException {
-        int uid = Integer.valueOf(req.getParameter("uid"));
-        ValueService.remove(new Value(uid));
-        return SimpleAnswer.EMPTY;
+        try {
+            int uid = Integer.parseInt(req.getParameter("uid"));
+            ValueService.remove(new Value(uid));
+            return SimpleAnswer.EMPTY;
+        } catch (NumberFormatException e) {
+            throw new ServiceException(e);
+        }
     }
 }

@@ -22,14 +22,18 @@ public class ValueServletUpdate implements HttpHandler {
     
     @Override
     public SimpleAnswer execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceException {
-        int uid  = Integer.valueOf(req.getParameter("uid"));
-        double x = Double.valueOf(req.getParameter("x"));
-        double y = Double.valueOf(req.getParameter("y"));
+        try {
+            int uid  = Integer.parseInt(req.getParameter("uid"));
+            double x = Double.parseDouble(req.getParameter("x"));
+            double y = Double.parseDouble(req.getParameter("y"));
     
-        Value value = new Value(x, y);
-        value.setUid(uid);
-        
-        ValueService.updateValue(value);
-        return SimpleAnswer.EMPTY;
+            Value value = new Value(x, y);
+            value.setUid(uid);
+    
+            ValueService.updateValue(value);
+            return SimpleAnswer.EMPTY;
+        } catch (NumberFormatException e) {
+            throw new ServiceException(e);
+        }
     }
 }
