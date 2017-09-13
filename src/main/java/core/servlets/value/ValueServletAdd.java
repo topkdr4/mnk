@@ -23,19 +23,23 @@ public class ValueServletAdd implements HttpHandler {
     
     @Override
     public SimpleAnswer execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceException {
-        int countryUid = Integer.valueOf(req.getParameter("countryUid"));
-        int indexUid   = Integer.valueOf(req.getParameter("indexUid"));
-        double valueX  = Double.valueOf(req.getParameter("valueX"));
-        double valueY  = Double.valueOf(req.getParameter("valueY"));
-        
-        Country country = new Country();
-        country.setId(countryUid);
+        try {
+            int countryUid = Integer.parseInt(req.getParameter("countryUid"));
+            int indexUid   = Integer.parseInt(req.getParameter("indexUid"));
+            double valueX  = Double.parseDouble(req.getParameter("valueX"));
+            double valueY  = Double.parseDouble(req.getParameter("valueY"));
     
-        Index index =  new Index(indexUid, "");
-        
-        Value value = new Value(valueX, valueY);
-        
-        ValueService.add(country, index, value);
-        return SimpleAnswer.EMPTY;
+            Country country = new Country();
+            country.setId(countryUid);
+    
+            Index index =  new Index(indexUid, "");
+    
+            Value value = new Value(valueX, valueY);
+    
+            ValueService.add(country, index, value);
+            return SimpleAnswer.EMPTY;
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
     }
 }
