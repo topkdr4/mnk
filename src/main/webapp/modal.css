@@ -1,0 +1,23 @@
+.modal_form {
+    border:                 1px solid black;
+    border-radius:          2px;
+    width:                  400px;
+    display:                flex;
+    flex-direction:         column;
+    justify-content:        center;
+    background-color:       #FAFAFA;
+}
+
+.modal_form > .element {
+    border:                 1px solid black;
+    margin:                 10px 40px;
+}
+
+.modal_form > .header {
+    text-align:             center;
+    padding:                16px 32px 16px 32px;
+}
+
+.modal_form > .footer {
+    text-align:             center;
+}

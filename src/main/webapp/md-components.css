@@ -1,0 +1,105 @@
+.md-button {
+    border:                 none;
+    border-radius:          2px;
+    padding:                10px 20px 10px 20px;
+    outline:                0;
+    background-color:       #2196F3;
+    transition:             box-shadow  0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay:       0.2s;
+    box-shadow:             0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    color:                  white;
+    font-size:              16pt;
+    font-family:            Roboto;
+    margin:                 10px;
+    cursor:                 pointer;
+}
+
+.md-button:active {
+    box-shadow:             0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    transition-delay:       0s;
+}
+
+
+.flat {
+    background-color:       transparent;
+    box-shadow:             none;
+    color:                  black;
+}
+
+.flat:focus {
+    background-color:       #EEEEEE;
+}
+
+
+.flat:hover {
+    background-color:       #EEEEEE;
+}
+
+.flat:active {
+    background-color:       #E0E0E0;
+}
+
+
+.remove {
+    color:                  #EF5350;
+}
+
+.remove:active {
+    color:                  #F44336;
+}
+
+/**********************************************************/
+.md-card {
+    border:                 1px solid #757575;
+    border-radius:          1px;
+    width:                  370px;
+    background-color:       #FAFAFA;
+    transition:             box-shadow  0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay:       0.2s;
+    box-shadow:             0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    padding:                10px;
+    display:                flex;
+    flex-direction:         column;
+    justify-content:        flex-start;
+    margin:                 30px;
+}
+
+
+.md-card > .card-image {
+    height:                 100px;
+    background:             url('uk.png') no-repeat;
+    padding:                12px 12px 0px 150px;
+    font-size:              2em;
+    word-break:             break-all;
+    text-align:             center;
+    user-select:            none;
+    cursor:                 default;
+}
+
+.md-card > .card-footer {
+    text-align:             right;
+}
+
+/**********************************************************/
+.md-input-text {
+    outline:                none;
+    font-family:            Roboto;
+    font-size:              20px;
+    height:                 36px;
+    padding-left:           10px;
+    box-sizing:             border-box;
+    height:                 40px;
+    border:                 none;
+    width:                  auto;
+    max-width:              600px;
+    min-width:              120px;
+}
+
+.md-input-text:focus {
+    border:                 1px solid #757575;
+    border-radius:          2px;
+    background-color:       #F5F5F5;
+    width:                  600px;
+    transition-duration:    .2s;
+    box-shadow:             0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
