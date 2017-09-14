@@ -3,12 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="dashboard.css">
     <style>
 
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            font-family: Roboto;
+        }
+
+        .container {
+            border: 1px solid blue;
+            width: 90%;
+            height: 100%;
+            display:                flex;
+            flex-direction:         column;
+        }
 
     </style>
 </head>
 <body>
+    <div class="menu">
+        <div class="header">
 
+        </div>
+
+        <div id="home" class="item">
+            Домой
+        </div>
+
+        <div class="item">
+            <div class="item_image" data-image=""></div>
+            <div class="item_text">Страны</div>
+        </div>
+
+        <div class="item">
+            <div class="item_image" data-image=""></div>
+            <div class="item_text">Показатели</div>
+        </div>
+
+        <div class="item">
+            <div class="item_image" data-image=""></div>
+            <div class="item_text">Сравнить</div>
+        </div>
+    </div>
+
+    <div class="container">
+
+    </div>
 </body>
 </html>
