@@ -1,44 +1,220 @@
+* {
+    padding:                0;
+    margin:                 0;
+    box-sizing:             border-box;
+}
 /*----------*/
 .menu {
-    border:                 1px solid black;
     width:                  10%;
-    height:                 100%;
+    height:                 100vh;
     display:                flex;
     flex-direction:         column;
 }
 
 .menu > .header {
-    height:                 130px;
-    background-color:       #37474F;
+    height:                 150px;
+    background:             #37474F url("account.svg") no-repeat center 65%;
 }
+
+
+.color_block {
+    width:                  100%;
+    height:                 30px;
+    background-color:       #263238;
+}
+
 
 .menu > .item {
     height:                 40px;
     color:                  #B0BEC5;
-    display:                flex;
-    flex-direction:         row;
     background-color:       #546E7A;
     user-select:            none;
     cursor:                 pointer;
-    font-size:              10px;
+    font-size:              16px;
+    line-height:            40px;
+    text-align:             right;
+    padding-right:          30px;
+    transition-duration:    .3s;
 }
 
-.item > .item_image {
-    width:                  50%;
-    height:                 100%;
+.menu > .empty {
+    background-color:       #546E7A;
+    flex: 1;
+}
+
+.item:nth-child(odd) {
+    border-top:             1px solid #687d93;
+    border-bottom:          1px solid #687d93;
+}
+
+.item:hover {
+    color:                  black;
 }
 
 .item[id="home"] {
-    background:             #546E7A url(to_home_white.svg) no-repeat left;
+    background:             #546E7A url(to_home_white.svg) no-repeat 25% 50%;
 }
 
 .item[id="home"]:hover {
-    color:                  black;
-    background:             #546E7A url(to_home_black.svg) no-repeat left;
+    background:             #546E7A url(to_home_black.svg) no-repeat 25% 50%;
 }
 
-.item > .item_text {
-    width:                  50%;
-    height:                 100%;
-    line-height:            40px;
+.item[id="indices"] {
+    background:             #546E7A url(indecies_white.png) no-repeat 25% 50%;
 }
+
+.item[id="indices"]:hover {
+    background:             #546E7A url(indecies_black.svg) no-repeat 25% 50%;
+}
+
+.item[id="countries"] {
+    background:             #546E7A url(country_white.svg) no-repeat 25% 50%;
+}
+
+.item[id="countries"]:hover {
+    background:             #546E7A url(country_black.svg) no-repeat 25% 50%;
+}
+
+.item[id="compare"] {
+    background:             #546E7A url(compare_white.png) no-repeat 25% 50%;
+}
+
+.item[id="compare"]:hover {
+    background:             #546E7A url(compare_black.png) no-repeat 25% 50%;
+}
+
+/*----------*/
+.container {
+    width:                  90%;
+    height:                 97vh;
+    margin:                 10px;
+    background-color:       #E0E0E0;
+    box-shadow:             0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    border-radius:          2px;
+}
+
+.card-count-container {
+    display:                flex;
+    flex-direction:         row;
+    justify-content:        center;
+    align-items:            center;
+    height:                 100%;
+    user-select:            none;
+    cursor:                 default;
+}
+
+.card-count-container > * {
+    width:                  700px;
+    height:                 700px;
+    margin:                 40px;
+    display:                flex;
+    flex-direction:         column;
+    align-content:          center;
+    justify-content:        center;
+    background-color:       #EEEEEE;
+    border-radius:          2px;
+    box-shadow:             0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.card-count-container .number {
+    font-size:              35em;
+    font-weight:            lighter;
+    color:                  #424242;
+    letter-spacing:         -20px;
+    text-align:             center;
+    height:                 650px;
+}
+
+.card-count-container .description {
+    text-align:             center;
+    margin:                 20px;
+    font-size:              25px;
+}
+
+
+/*----------*/
+.country_search {
+    text-align:             center;
+    margin:                 20px;
+}
+
+#search_country {
+    background:             url('search.png') no-repeat;
+    padding-left:           40px;
+    transition-duration:    .3s;
+    border-bottom:          2px solid #607D8B;
+}
+
+#search_country:focus {
+    border-radius:          2px;
+    background:             #F5F5F5;
+    padding-left:           10px;
+    width:                  600px;
+    transition-duration:    .2s;
+    box-shadow:             0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+
+.countries-container {
+    display:                flex;
+    flex-direction:         row;
+    flex-flow:              row wrap;
+    justify-content:        center;
+    width:                  100%;
+    text-align:             center;
+    margin:                 auto;
+    font-size:              14px;
+    overflow:               auto;
+}
+
+/*----------*/
+button {
+    border:                 none;
+    cursor:                 pointer;
+    color:                  white;
+    border-radius:          50%;
+    font-size:              32pt;
+    box-shadow:             2px 2px 4px rgba(0, 0, 0, .4);
+    background:             #2196F3;
+    width:                  60px;
+    height:                 60px;
+    user-select:            none;
+    outline:                none;
+}
+
+button{
+    overflow:               hidden;
+    position:               fixed;
+    bottom:                 35px;
+    right:                  25px;
+}
+
+button:after {
+    content:                '';
+    position:               absolute;
+    top:                    50%;
+    left:                   50%;
+    width:                  5px;
+    height:                 5px;
+    background:             rgba(255, 255, 255, .5);
+    opacity:                0;
+    border-radius:          100%;
+    transform:              scale(1, 1) translate(-50%);
+    transform-origin:       50% 50%;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(40, 40);
+    }
+}
+
+button:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+/*----------*/

@@ -5,6 +5,7 @@
     <title>Title</title>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="md-components.css">
     <style>
 
         body {
@@ -12,14 +13,8 @@
             padding: 0;
             display: flex;
             font-family: Roboto;
-        }
-
-        .container {
-            border: 1px solid blue;
-            width: 90%;
             height: 100%;
-            display:                flex;
-            flex-direction:         column;
+            background-color: #EEEEEE;
         }
 
     </style>
@@ -27,31 +22,71 @@
 <body>
     <div class="menu">
         <div class="header">
-
+            <div class="color_block"></div>
         </div>
 
-        <div id="home" class="item">
-            Домой
-        </div>
+        <div id="home" class="item">Главная</div>
+        <div id="countries" class="item">Страны</div>
+        <div id="indices" class="item">Показатели</div>
+        <div id="compare" class="item">Сравнить</div>
 
-        <div class="item">
-            <div class="item_image" data-image=""></div>
-            <div class="item_text">Страны</div>
-        </div>
+        <div class="empty"></div>
 
-        <div class="item">
-            <div class="item_image" data-image=""></div>
-            <div class="item_text">Показатели</div>
-        </div>
-
-        <div class="item">
-            <div class="item_image" data-image=""></div>
-            <div class="item_text">Сравнить</div>
-        </div>
     </div>
 
     <div class="container">
 
+        <!--<div class="card-count-container">
+            <div class="card-count-countries">
+                <div class="number">
+                    85
+                </div>
+                <div class="description">Стран</div>
+            </div>
+            <div class="card-count-indecies">
+                <div class="number">
+                    11
+                </div>
+                <div class="description">Показателей</div>
+            </div>
+        </div>-->
+
+        <div class="country_search">
+            <input id="search_country" type="text" class="md-input-text" placeholder="Найти...">
+        </div>
+
+        <div class="countries-container">
+
+            <div class="md-card">
+                <div class="card-image">Соединённое Королевство</div>
+            </div>
+
+            <div class="md-card">
+                <div class="card-image" style="background: url('сanada.png') no-repeat left 40%">Канада</div>
+            </div>
+
+            <div class="md-card">
+                <div class="card-image" style="background: url('Barbados.png') no-repeat left 40%">Барбадос</div>
+            </div>
+
+            <div class="md-card">
+                <div class="card-image" style="background: url('Finland.png') no-repeat left 40%">Финляндия</div>
+            </div>
+
+            <div class="md-card">
+                <div class="card-image" style="background: url('Sweden.png') no-repeat left 40%">Швеция</div>
+            </div>
+
+            <div class="md-card">
+                <div class="card-image" style="background: url('Poland.png') no-repeat left 40%">Польша</div>
+            </div>
+
+            <div class="md-card">
+                <div class="card-image" style="background: url('Turkey.png') no-repeat left 40%">Турция</div>
+            </div>
+        </div>
+
+        <button>+</button>
     </div>
 </body>
 </html>
