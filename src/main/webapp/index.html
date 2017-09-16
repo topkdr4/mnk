@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="dashboard.css">
-    <link rel="stylesheet" href="md-components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/md-components.css">
     <style>
 
         body {
@@ -36,6 +36,8 @@
 
     <div class="container">
 
+        <!-- Dashboard -->
+
         <!--<div class="card-count-container">
             <div class="card-count-countries">
                 <div class="number">
@@ -51,42 +53,43 @@
             </div>
         </div>-->
 
+
+        <!--   Countries list   -->
+
         <div class="country_search">
             <input id="search_country" type="text" class="md-input-text" placeholder="Найти...">
         </div>
 
         <div class="countries-container">
+            <div class="wrap-countries">
+                <div class="md-card">
+                    <div class="card-image">Соединённое Королевство</div>
+                </div>
 
-            <div class="md-card">
-                <div class="card-image">Соединённое Королевство</div>
-            </div>
+                <div class="md-card">
+                    <div class="card-image" style="background: url('icons/сanada.png') no-repeat left 40%">Канада</div>
+                </div>
 
-            <div class="md-card">
-                <div class="card-image" style="background: url('сanada.png') no-repeat left 40%">Канада</div>
-            </div>
+                <div class="md-card">
+                    <div class="card-image" style="background: url('icons/Barbados.png') no-repeat left 40%">Барбадос</div>
+                </div>
 
-            <div class="md-card">
-                <div class="card-image" style="background: url('Barbados.png') no-repeat left 40%">Барбадос</div>
-            </div>
+                <div class="md-card">
+                    <div class="card-image" style="background: url('icons/Finland.png') no-repeat left 40%">Финляндия</div>
+                </div>
 
-            <div class="md-card">
-                <div class="card-image" style="background: url('Finland.png') no-repeat left 40%">Финляндия</div>
-            </div>
+                <div class="md-card">
+                    <div class="card-image" style="background: url('icons/Sweden.png') no-repeat left 40%">Швеция</div>
+                </div>
 
-            <div class="md-card">
-                <div class="card-image" style="background: url('Sweden.png') no-repeat left 40%">Швеция</div>
-            </div>
+                <div class="md-card">
+                    <div class="card-image" style="background: url('icons/Poland.png') no-repeat left 40%">Польша</div>
+                </div>
 
-            <div class="md-card">
-                <div class="card-image" style="background: url('Poland.png') no-repeat left 40%">Польша</div>
-            </div>
-
-            <div class="md-card">
-                <div class="card-image" style="background: url('Turkey.png') no-repeat left 40%">Турция</div>
             </div>
         </div>
 
-        <button>+</button>
+        <button class="add-new-country">+</button>
     </div>
 </body>
 </html>

@@ -3,28 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <title>Добавить страну</title>
-    <link rel="stylesheet" href="md-components.css">
-    <link rel="stylesheet" href="modal.css">
-
+    <link rel="stylesheet" href="css/md-components.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <script src="js/jquery.js"></script>
     <style>
         body {
             margin: 0;
-            padding: 0;
+            padding: 10%;
+            /*background-color: rgba(0, 0, 0, .6);*/
         }
     </style>
 
 </head>
 <body>
+
     <div class="modal_form">
         <div class="header">Новая страна</div>
 
-        <div class="element">Название страны</div>
-        <div class="element">Выбор флага</div>
+        <div class="element">Название<input type="text" class="md-input-text country-name"></div>
+        <div class="element">Флаг
+
+            <div class="md-combobox">
+                <div class="md-combobox-list">
+                    <div class="md-combobox-item" data-image="Armenia.png"></div>
+                    <div class="md-combobox-item"></div>
+                    <div class="md-combobox-item"></div>
+                    <div class="md-combobox-item"></div>
+                    <div class="md-combobox-item"></div>
+                </div>
+            </div>
+        </div>
 
         <div class="footer">
-            <input type="button" value="Отмена" class="md-button remove flat">
+            <input type="button" value="Отмена"  class="md-button remove flat">
             <input type="button" value="Добавить" class="md-button">
         </div>
     </div>
+
+    <script>
+        $('.modal_form > *:not([class^="md-combo"])').on('click', function(e) {
+            var child = $(this).find('.md-combobox-list:visible');
+            if (child.length == 0)
+                $('.md-combobox-list:visible').hide();
+        });
+
+        $('div.md-combobox').on('click', function(e) {
+            $('.md-combobox-list').show();
+        });
+
+        $('.md-combobox-list').find('.md-combobox-item').each(function (item) {
+            var attr = $(this).attr('data-image');
+            $(this).css({
+                'background' : 'url(' + attr + ') no-repeat center center',
+                'background-size': 'contain'
+            }).hover(function() {
+                $(this).css({
+                    'background-color' : '#F5F5F5'
+                });
+            }, function() {
+                $(this).css({
+                    'background-color' : '#FAFAFA'
+                });
+            });
+        });
+
+        $('.modal_form').on('.md-combobox-item', 'click', function(e) {
+            console.log($(this));
+            console.log($('.md-combobox-list'));
+        });
+    </script>
+
 </body>
 </html>

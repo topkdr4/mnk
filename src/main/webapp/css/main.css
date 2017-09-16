@@ -75,7 +75,7 @@ button:focus:not(:active)::after {
 }
 
 .search_country {
-    background: url('search.png') no-repeat;
+    background: url('../icons/search.png') no-repeat;
     padding-left:       40px;
 }
 

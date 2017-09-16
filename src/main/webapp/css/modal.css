@@ -1,0 +1,35 @@
+.modal_form {
+    border-radius:          2px;
+    width:                  400px;
+    display:                flex;
+    flex-direction:         column;
+    justify-content:        center;
+    background-color:       #EFEBE9;
+    font-family:            Roboto;
+    box-shadow:             0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.modal_form > .element {
+    display:                flex;
+    flex-direction:         row;
+    height:                 60px;
+    align-items:            center;
+    padding:                10px;
+}
+
+.modal_form > .header {
+    text-align:             center;
+    padding:                16px 32px 16px 32px;
+}
+
+.modal_form > .footer {
+    text-align:             center;
+    z-index:                2;
+    position:               relative;
+}
+
+.country-name {
+    margin:                 10px;
+    transition-duration:    .3s;
+    border-bottom:          1px solid #607D8B;
+}

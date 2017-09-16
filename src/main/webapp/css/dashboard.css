@@ -13,7 +13,7 @@
 
 .menu > .header {
     height:                 150px;
-    background:             #37474F url("account.svg") no-repeat center 65%;
+    background:             #37474F url("../icons/account.svg") no-repeat center 65%;
 }
 
 
@@ -32,8 +32,8 @@
     cursor:                 pointer;
     font-size:              16px;
     line-height:            40px;
-    text-align:             right;
-    padding-right:          30px;
+    text-align:             left;
+    padding-left:           70px;
     transition-duration:    .3s;
 }
 
@@ -52,35 +52,35 @@
 }
 
 .item[id="home"] {
-    background:             #546E7A url(to_home_white.svg) no-repeat 25% 50%;
+    background:             #546E7A url(../icons/to_home_white.svg) no-repeat 25% 50%;
 }
 
 .item[id="home"]:hover {
-    background:             #546E7A url(to_home_black.svg) no-repeat 25% 50%;
+    background:             #546E7A url(../icons/to_home_black.svg) no-repeat 25% 50%;
 }
 
 .item[id="indices"] {
-    background:             #546E7A url(indecies_white.png) no-repeat 25% 50%;
+    background:             #546E7A url(../icons/indecies_white.png) no-repeat 25% 50%;
 }
 
 .item[id="indices"]:hover {
-    background:             #546E7A url(indecies_black.svg) no-repeat 25% 50%;
+    background:             #546E7A url(../icons/indecies_black.svg) no-repeat 25% 50%;
 }
 
 .item[id="countries"] {
-    background:             #546E7A url(country_white.svg) no-repeat 25% 50%;
+    background:             #546E7A url(../icons/country_white.svg) no-repeat 25% 50%;
 }
 
 .item[id="countries"]:hover {
-    background:             #546E7A url(country_black.svg) no-repeat 25% 50%;
+    background:             #546E7A url(../icons/country_black.svg) no-repeat 25% 50%;
 }
 
 .item[id="compare"] {
-    background:             #546E7A url(compare_white.png) no-repeat 25% 50%;
+    background:             #546E7A url(../icons/compare_white.png) no-repeat 25% 50%;
 }
 
 .item[id="compare"]:hover {
-    background:             #546E7A url(compare_black.png) no-repeat 25% 50%;
+    background:             #546E7A url(../icons/compare_black.png) no-repeat 25% 50%;
 }
 
 /*----------*/
@@ -135,11 +135,11 @@
 /*----------*/
 .country_search {
     text-align:             center;
-    margin:                 20px;
+    margin:                 20px 20px 60px 20px;
 }
 
 #search_country {
-    background:             url('search.png') no-repeat;
+    background:             url('../icons/search.png') no-repeat;
     padding-left:           40px;
     transition-duration:    .3s;
     border-bottom:          2px solid #607D8B;
@@ -157,14 +157,19 @@
 
 .countries-container {
     display:                flex;
+    flex-direction:         column;
+    width:                  100%;
+    font-size:              14px;
+    align-items:            center;
+    height:                 85%;
+}
+
+.wrap-countries {
+    display:                flex;
     flex-direction:         row;
     flex-flow:              row wrap;
-    justify-content:        center;
-    width:                  100%;
-    text-align:             center;
-    margin:                 auto;
-    font-size:              14px;
     overflow:               auto;
+    margin:                 0 100px 0 110px;
 }
 
 /*----------*/
