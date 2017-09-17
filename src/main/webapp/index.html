@@ -10,6 +10,7 @@
 
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/highcharts.js"></script>
 
     <style>
 
@@ -91,7 +92,7 @@
 
         <!--   Countries list   -->
 
-        <div class="country_search">
+        <!--<div class="country_search">
             <input id="search_country" type="text" class="md-input-text" placeholder="Найти...">
         </div>
 
@@ -124,7 +125,79 @@
             </div>
         </div>
 
-        <button class="add-new-country">+</button>
+        <button class="add-new-country">+</button>-->
+
+        <!--  Country information  -->
+        <div class="country-detail">
+            <div class="tab-container">
+                <div class="tab graph tab-active">График</div>
+                <div class="tab table">Таблица</div>
+            </div>
+
+            <div id="container" class="chart"></div>
+        </div>
+
     </div>
+
+    <script>
+
+        $(function () {
+            var values = {"result":[{"valueY":8.0,"valueX":1.0,"uid":0},{"valueY":6.0,"valueX":2.0,"uid":0},{"valueY":10.0,"valueX":3.0,"uid":0},{"valueY":6.0,"valueX":4.0,"uid":0},{"valueY":10.0,"valueX":5.0,"uid":0},{"valueY":13.0,"valueX":6.0,"uid":0},{"valueY":9.0,"valueX":7.0,"uid":0},{"valueY":11.0,"valueX":8.0,"uid":0},{"valueY":15.0,"valueX":9.0,"uid":0},{"valueY":17.0,"valueX":10.0,"uid":0}],"errorCode":0,"errorText":null};
+            values = values.result;
+            var obj = {"result":[{"valueX":1.0,"valueY":6.109090909090909,"uid":0},{"valueX":2.0,"valueY":7.084848484848485,"uid":0},{"valueX":3.0,"valueY":8.06060606060606,"uid":0},{"valueX":4.0,"valueY":9.036363636363637,"uid":0},{"valueX":5.0,"valueY":10.012121212121212,"uid":0},{"valueX":6.0,"valueY":10.987878787878788,"uid":0},{"valueX":7.0,"valueY":11.963636363636365,"uid":0},{"valueX":8.0,"valueY":12.93939393939394,"uid":0},{"valueX":9.0,"valueY":13.915151515151514,"uid":0},{"valueX":10.0,"valueY":14.89090909090909,"uid":0}],"errorCode":0,"errorText":null};
+            obj = obj.result;
+
+            var data = [];
+            values.forEach(function (item) {
+                var dd = [];
+                dd.push(item.valueX);
+                dd.push(item.valueY);
+                data.push(dd)
+            });
+
+            var regression = [];
+            obj.forEach(function(item) {
+                var rr = [];
+                rr.push(item.valueX);
+                rr.push(item.valueY);
+                regression.push(rr);
+            });
+
+
+            var myChart = Highcharts.chart('container', {
+                xAxis: {
+                    min: -0.5
+                },
+                yAxis: {
+                    min: 0
+                },
+                title: {
+                    text: 'Scatter plot with regression line'
+                },
+                series: [{
+                    type: 'line',
+                    name: 'Regression Line',
+                    data: regression,
+                    marker: {
+                        enabled: true
+                    },
+                    states: {
+                        hover: {
+                            lineWidth: 0
+                        }
+                    },
+                    enableMouseTracking: false
+                }, {
+                    type: 'scatter',
+                    name: 'Observations',
+                    data: data,
+                    marker: {
+                        radius: 4
+                    }
+                }]
+            });
+        });
+
+    </script>
 </body>
 </html>

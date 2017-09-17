@@ -210,16 +210,66 @@ button:after {
 
 @keyframes ripple {
     0% {
-        transform: scale(0, 0);
-        opacity: 1;
+        transform:          scale(0, 0);
+        opacity:            1;
     }
     100% {
-        opacity: 0;
-        transform: scale(40, 40);
+        opacity:            0;
+        transform:          scale(40, 40);
     }
 }
 
 button:focus:not(:active)::after {
-    animation: ripple 1s ease-out;
+    animation:              ripple 1s ease-out;
 }
+
 /*----------*/
+.country-detail {
+    width:                  99%;
+    height:                 98%;
+    border-radius:          2px;
+    box-sizing:             border-box;
+    margin:                 10px;
+    display:                flex;
+    flex-direction:         column;
+    justify-content:        flex-start;
+    box-shadow:             2px 2px 4px rgba(0, 0, 0, .4);
+}
+
+.tab-container {
+    display:                flex;
+    flex-direction:         row;
+    justify-content:        center;
+    background-color:       #607D8B;
+}
+
+.tab {
+    box-sizing:             border-box;
+    width:                  100%;
+    text-align:             center;
+    height:                 60px;
+    line-height:            40px;
+    user-select:            none;
+    font-weight:            400;
+    cursor:                 pointer;
+    font-size:              20px;
+    padding:                10px 0 10px 0;
+    color:                  rgba(255, 255, 255, 0.5);
+}
+
+.tab:hover {
+    color:                  white;
+}
+
+.tab-active {
+    color:                  #F5F5F5;
+    border-bottom:          4px solid #00BCD4;
+}
+
+.tab-active:hover {
+    color:                  #F5F5F5;
+}
+
+.chart {
+    height:                 95%;
+}
