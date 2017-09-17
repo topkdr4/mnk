@@ -9,28 +9,25 @@
     <script src="js/jquery.js"></script>
     <style>
         body {
-            margin: 0;
-            padding: 10%;
-            /*background-color: rgba(0, 0, 0, .6);*/
+            background-color:           rgba(0, 0, 0, 0.6);
         }
     </style>
-
 </head>
 <body>
 
     <div class="modal_form">
-        <div class="header">Новая страна</div>
+        <div class="header">НОВАЯ СТРАНА</div>
 
-        <div class="element">Название<input type="text" class="md-input-text country-name"></div>
+        <div class="element">Название<input type="text" class="md-input-text country-name md-shadow"></div>
         <div class="element">Флаг
 
-            <div class="md-combobox">
-                <div class="md-combobox-list">
+            <div class="md-combobox md-combobox-item-width">
+                <div class="md-combobox-list md-combobox-item-width">
                     <div class="md-combobox-item" data-image="Armenia.png"></div>
-                    <div class="md-combobox-item"></div>
-                    <div class="md-combobox-item"></div>
-                    <div class="md-combobox-item"></div>
-                    <div class="md-combobox-item"></div>
+                    <div class="md-combobox-item" data-image="Brazil.png"></div>
+                </div>
+                <div class="selector">
+
                 </div>
             </div>
         </div>
@@ -42,10 +39,14 @@
     </div>
 
     <script>
+
         $('.modal_form > *:not([class^="md-combo"])').on('click', function(e) {
             var child = $(this).find('.md-combobox-list:visible');
-            if (child.length == 0)
-                $('.md-combobox-list:visible').hide();
+            if (child.length != 0)
+                return;
+
+            $('.md-combobox-list:visible').hide();
+            var combobox = $('.md-combobox');
         });
 
         $('div.md-combobox').on('click', function(e) {
@@ -65,13 +66,17 @@
                 $(this).css({
                     'background-color' : '#FAFAFA'
                 });
+            }).on('click', function(e) {
+                $('.md-combobox-list').fadeOut();
+                $('div.md-combobox').attr({
+                    'data-image' : attr
+                }).css({
+                    'background' : '#FAFAFA url(' + attr + ') no-repeat 30% center',
+                    'background-size' : 'contain'
+                });
             });
         });
 
-        $('.modal_form').on('.md-combobox-item', 'click', function(e) {
-            console.log($(this));
-            console.log($('.md-combobox-list'));
-        });
     </script>
 
 </body>
