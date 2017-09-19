@@ -27,7 +27,7 @@ jQuery(function(global) {
 
         setDefaultForm();
         $('.hover').show();
-        $('.modal_form').show();
+        $('.modal_form_country').show();
     });
 
     $('.hover').on('click', function(e) {
@@ -37,7 +37,7 @@ jQuery(function(global) {
 
     //*********************************************************************
 
-    $('.modal_form > *:not([class^="md-combo"])').on('click', function(e) {
+    $('.modal_form_country > *:not([class^="md-combo"])').on('click', function(e) {
         var child = $(this).find('.md-combobox-list:visible');
         if (child.length != 0)
             return;
@@ -96,5 +96,17 @@ jQuery(function(global) {
             'background-size' : 'contain'
         });
     }
+
+
+    //****************************************************************************
+    $('.add-new-index').on('click', function() {
+        $('.hover').show();
+        $('.modal_form_index').show();
+    });
+
+    $('.index-abort').on('click', function() {
+        $('.modal_form_index').fadeOut();
+        $('.hover').hide();
+    });
 
 });

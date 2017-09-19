@@ -276,10 +276,114 @@ button:focus:not(:active)::after {
     height:                 95%;
 }
 
+/*--------*/
 .md-table {
-    border:                 1px solid black;
     height:                 100%;
     overflow:               auto;
     box-sizing:             border-box;
     margin-top:             3px;
+    display:                flex;
+    flex-direction:         center;
+    user-select:            none;
+    cursor:                 pointer;
+    margin-top:             10px;
+}
+
+.md-table > table {
+    width:                  100%;
+    border-collapse:        collapse;
+    background-color:       #FAFAFA;
+    border-radius:          2px;
+}
+
+.x-value, .y-value {
+    text-align:             right;
+    padding-right:          100px;
+}
+
+tr:hover:not([class="header-line"]) {
+    background-color:       #EEEEEE;
+}
+
+td {
+    padding:                10px 25px;
+    box-sizing:             border-box;
+}
+
+td.checkbox, .save-value, .remove-value {
+    width:                  100px;
+}
+
+.remove-value {
+    background:             url(../icons/delete.svg) no-repeat center center;
+}
+
+.save-value {
+    background:             url(../icons/save.svg) no-repeat center center;
+}
+
+.no_check {
+    background:             url(../icons/no_check.svg) no-repeat center center;
+}
+
+.check {
+    background:             url(../icons/check.svg) no-repeat center center;
+}
+
+th, td:nth-child(even) {
+    border-right:           1px solid #E0E0E0;
+    border-left:            1px solid #E0E0E0;
+}
+
+th {
+    padding:                24px;
+    border-bottom:          1px solid #E0E0E0;
+}
+
+/*--------*/
+.common-combobox {
+    font-family:            Roboto;
+    font-size:              20px;
+    height:                 40px;
+    background-color:       #607D8B;
+    color:                  #F5F5F5;
+    width:                  240px;
+    border:                 none;
+    outline:                none;
+}
+
+.common-option {
+    background-color:       white;
+    color:                  black;
+}
+
+/*--------*/
+.indecies-container {
+    display:                flex;
+    flex-direction:         column;
+    width:                  100%;
+    font-size:              14px;
+    align-items:            center;
+    height:                 85%;
+}
+
+.index-card {
+    border-radius:          1px;
+    width:                  120px;
+    background-color:       #FAFAFA;
+    transition:             box-shadow  0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:             0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    padding:                10px;
+    margin:                 10px;
+    display:                table;
+    text-align:             center;
+    user-select:            none;
+    cursor:                 default;
+}
+
+.wrap-indecies {
+    display:                flex;
+    flex-direction:         row;
+    flex-flow:              row wrap;
+    overflow:               auto;
 }
