@@ -109,4 +109,42 @@ jQuery(function(global) {
         $('.hover').hide();
     });
 
+    //****************************************************************************
+    $('.country-combobox-list').find('.country-combobox-item').each(function(item) {
+        var current = $(this);
+        var image   = current.attr('data-image');
+        var uid     = current.attr('data-uid');
+        current.css({
+            'background' : '#FAFAFA url(' + image + ') no-repeat 2% center',
+            'background-size': 'contain'
+        }).hover(function() {
+            $(this).css({
+                'background-color' : '#F5F5F5'
+            });
+        }, function() {
+            $(this).css({
+                'background-color' : '#FAFAFA'
+            });
+        }).on('click', function(e) {
+            $('.country-combobox').attr({
+                'data-image' : image,
+                'uid':         uid
+            }).css({
+                'background' : '#FAFAFA url(' + image + ') no-repeat 2% center',
+                'background-size' : 'contain'
+            }).text(current.text());
+
+            $('.country-combobox-list').hide();
+         });
+    });
+
+    $('.country-combobox').on('click', function(e) {
+        var current = $(this);
+        var width = current.outerWidth(true);
+        var pos   = current.position();
+        $('.country-combobox-list').width(width).css({
+            left: pos.left,
+            top : pos.top
+        }).show();
+    });
 });

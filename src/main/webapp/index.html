@@ -23,6 +23,12 @@
             background-color: #EEEEEE;
         }
 
+        .block {
+            width:          100%;
+            height:         50%;
+            background-color:   black;
+        }
+
     </style>
 </head>
 <body>
@@ -198,16 +204,40 @@
         <div class="compare-container">
 
             <div class="compare-options-container">
+
                 <div class="option">
-                    Бокс1
+
+                    <select name="indecies-list" id="" class="common-combobox">
+                        <option value="" class="common-option">Показатель 1</option>
+                        <option value="" class="common-option">Показатель 2</option>
+                        <option value="" class="common-option">Показатель 3</option>
+                        <option value="" class="common-option">Показатель 4</option>
+                    </select>
+
                 </div>
+
                 <div class="option">
-                    Бокс2
+
+                    <div class="country-combobox"></div>
+
+                    <div class="country-combobox-list">
+                        <div class="country-combobox-item" data-image="Armenia.png"> Армения</div>
+                        <div class="country-combobox-item" data-image="Brazil.png"> Бразилия</div>
+                        <div class="country-combobox-item" data-uid="134" data-image="Wales.png"> Уэльс</div>
+                        <div class="country-combobox-item" data-image="Ukraine.png"> Украина</div>
+                        <div class="country-combobox-item" data-image="United-Nations.png"> ООН</div>
+                    </div>
+
                 </div>
-                <div class="option compare-button">
-                    Сравнить
+
+                <div class="option">
+                    Бокс выбора страны
                 </div>
+
+                <div class="option compare-button">Сравнить</div>
+
             </div>
+
 
             <div id="container" class="chart"></div>
 
@@ -262,7 +292,7 @@
                             lineWidth: 0
                         }
                     },
-                    enableMouseTracking: false
+                    enableMouseTracking: true
                 }, {
                     type: 'scatter',
                     name: 'Observations',
@@ -270,6 +300,19 @@
                     marker: {
                         radius: 4
                     }
+                }, {
+                    type: 'line',
+                    name: 'Regression Line 2',
+                    data: [ [0,1],  [1, 2], [2, 3], [2.5, 7] ],
+                    marker: {
+                        enabled: true
+                    },
+                    states: {
+                        hover: {
+                            lineWidth: 0
+                        }
+                    },
+                    enableMouseTracking: true
                 }]
             });
         });
