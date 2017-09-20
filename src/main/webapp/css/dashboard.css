@@ -387,3 +387,42 @@ th {
     flex-flow:              row wrap;
     overflow:               auto;
 }
+
+/*--------*/
+.compare-container {
+
+}
+
+.compare-options-container {
+    display:                flex;
+    flex-direction:         row;
+    justify-content:        center;
+    background-color:       #607D8B;
+    box-sizing:             border-box;
+}
+
+.option {
+    box-sizing:             border-box;
+    width:                  100%;
+    text-align:             center;
+    height:                 60px;
+    user-select:            none;
+    font-weight:            400;
+    cursor:                 pointer;
+    font-size:              20px;
+    padding:                10px 0 10px 0;
+    color:                  rgba(255, 255, 255, 0.5);
+    border-bottom:          4px solid #607D8B;
+    display:                flex;
+    justify-content:        center;
+    align-items:            center;
+}
+
+.option:nth-child(even) {
+    border-right:           1px solid #E0E0E0;
+    border-left:            1px solid #E0E0E0;
+}
+
+.compare-button {
+    color:                  #F5F5F5;
+}
