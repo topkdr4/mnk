@@ -28,13 +28,14 @@ import java.util.Set;
 public class ServletListener implements ServletContextListener {
 
     private static final Logger log = Logger.getLogger(ServletListener.class);
+    public static String applicationPath;
 
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         try {
-            String cc = servletContextEvent.getServletContext().getRealPath("/");
-            Path appPath = Paths.get(cc, "WEB-INF", "classes");
+            applicationPath = servletContextEvent.getServletContext().getRealPath("/");
+            Path appPath = Paths.get(applicationPath, "WEB-INF", "classes");
             Set<Class<?>> classes = Util.getClasses(appPath, clazz -> {
                 return clazz.isAnnotationPresent(HttpUrl.class) && HttpHandler.class.isAssignableFrom(clazz);
             });

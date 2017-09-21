@@ -1,29 +1,10 @@
 jQuery(function(global) {
     "use strict";
 
-    /*$.ajax({
-        url: 'ebota.html',
-        timeout: 10000,
-        success: function(){
-            console.log('succes');
-            $('.hover').remove();
-        },
-        error: function() {
-            setTimeout(function() {
-                console.log('fail');
-                $('.hover').remove();
-                $('body').css({
-                    'overflow': 'auto'
-                });
-            }, 100);
-        }
-    });*/
-
-    $('.add-new-country').on('click', function (e) {
+    $('.container').on('click', '.add-new-country', function (e) {
         $('body').css({
             'overflow': 'hidden'
         });
-
 
         setDefaultForm();
         $('.hover').show();
@@ -49,32 +30,16 @@ jQuery(function(global) {
         $('.md-combobox-list').show();
     });
 
-    $('.md-combobox-list').find('.md-combobox-item').each(function (item) {
-        var attr = $(this).attr('data-image');
-        $(this).css({
-            'background' : 'url(' + attr + ') no-repeat center center',
-            'background-size': 'contain'
-        }).hover(function() {
-            $(this).css({
-                'background-color' : '#F5F5F5'
-            });
-        }, function() {
-            $(this).css({
-                'background-color' : '#FAFAFA'
-            });
-        }).on('click', function(e) {
-            $('.md-combobox-list').fadeOut();
-            $('div.md-combobox').attr({
-                'data-image' : attr
-            }).css({
-                'background' : '#FAFAFA url(' + attr + ') no-repeat center center',
-                'background-size' : 'contain'
-            });
-        });
-    });
 
-    $('.conuntry-modal-add').on('click', function(e) {
-        console.log('send req');
+    $('.country-modal-add').on('click', function(e) {
+        var data = {
+            name: $('.country-name').val(),
+            url: $('.md-combobox').attr('data-image')
+        };
+
+        App.send('/webapi/country/add', data, function() {
+            $('.country-name').val('');
+        });
     });
 
     $('.country-modal-close').on('click', function(e) {
