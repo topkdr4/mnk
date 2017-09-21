@@ -109,4 +109,95 @@ jQuery(function(global) {
         $('.hover').hide();
     });
 
+    //****************************************************************************
+    $('.country-one-list').find('.country-one-item').each(function(item) {
+        var current = $(this);
+        var image   = current.attr('data-image');
+        var uid     = current.attr('data-uid');
+        current.css({
+            'background' : '#FAFAFA url(' + image + ') no-repeat 2% center',
+            'background-size': 'contain'
+        }).hover(function() {
+            $(this).css({
+                'background-color' : '#F5F5F5'
+            });
+        }, function() {
+            $(this).css({
+                'background-color' : '#FAFAFA'
+            });
+        }).on('click', function(e) {
+            $('.country-one').attr({
+                'data-image' : image,
+                'data-uid':         uid
+            }).css({
+                'background' : '#FAFAFA url(' + image + ') no-repeat 2% center',
+                'background-size' : 'contain'
+            }).text(current.text());
+
+            $('.country-one-list').hide();
+         });
+    });
+
+    $('.country-one').on('click', function(e) {
+        var current = $(this);
+        var width = current.outerWidth(true);
+        var pos   = current.position();
+        $('.country-one-list').width(width).css({
+            left: pos.left,
+            top : pos.top
+        }).show();
+    });
+
+    //****************************************************************************
+    $('.country-two-list').find('.country-two-item').each(function(item) {
+            var current = $(this);
+            var image   = current.attr('data-image');
+            var uid     = current.attr('data-uid');
+            current.css({
+                'background' : '#FAFAFA url(' + image + ') no-repeat 2% center',
+                'background-size': 'contain'
+            }).hover(function() {
+                $(this).css({
+                    'background-color' : '#F5F5F5'
+                });
+            }, function() {
+                $(this).css({
+                    'background-color' : '#FAFAFA'
+                });
+            }).on('click', function(e) {
+                $('.country-two').attr({
+                    'data-image' : image,
+                    'data-uid':         uid
+                }).css({
+                    'background' : '#FAFAFA url(' + image + ') no-repeat 2% center',
+                    'background-size' : 'contain'
+                }).text(current.text());
+
+                $('.country-two-list').hide();
+             });
+        });
+
+        $('.country-two').on('click', function(e) {
+            var current = $(this);
+            var width = current.outerWidth(true);
+            var pos   = current.position();
+            $('.country-two-list').width(width).css({
+                left: pos.left,
+                top : pos.top
+            }).show();
+        });
+
+        $('.compare-button').on('click', function(e) {
+            var first  = $('.country-one');
+            var second = $('.country-two');
+            var index  = $('.index:selected');
+
+            var compare = {
+                first:  first.attr('data-uid'),
+                second: second.attr('data-uid'),
+                index:  index.val()
+            };
+
+            //send query
+        });
 });

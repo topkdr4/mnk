@@ -387,3 +387,89 @@ th {
     flex-flow:              row wrap;
     overflow:               auto;
 }
+
+/*--------*/
+.compare-container {
+    margin:                 10px;
+    border-radius:          2px;
+    height:                 96%;
+}
+
+.compare-options-container {
+    display:                flex;
+    flex-direction:         row;
+    justify-content:        center;
+    background-color:       #607D8B;
+    box-sizing:             border-box;
+}
+
+.option {
+    box-sizing:             border-box;
+    width:                  100%;
+    text-align:             center;
+    height:                 60px;
+    user-select:            none;
+    font-weight:            400;
+    cursor:                 pointer;
+    font-size:              20px;
+    color:                  rgba(255, 255, 255, 0.5);
+    border-bottom:          4px solid #607D8B;
+    display:                flex;
+    justify-content:        center;
+    align-items:            center;
+}
+
+.option:nth-child(even) {
+    border-right:           1px solid #E0E0E0;
+    border-left:            1px solid #E0E0E0;
+}
+
+.compare-button {
+    color:                  #F5F5F5;
+}
+
+
+.country-combobox {
+    width:                  80%;
+    height:                 40px;
+    border-radius:          2px;
+    box-sizing:             border-box;
+    background-color:       #FAFAFA;
+    cursor:                 pointer;
+    box-shadow:             0 2px 5px 0 rgba(0, 0, 0, 0.2);
+    color:                  black;
+    text-align:             left;
+    padding-left:           50px;
+    line-height:            40px;
+}
+
+.country-combobox-list {
+    display:                none;
+    flex-direction:         column;
+    max-height:             160px;
+    min-height:             40px;
+    z-index:                40;
+    overflow:               auto;
+    position:               absolute;
+    border:                 1px solid #687d93;
+    border-radius:          2px;
+}
+
+.country-combobox-item {
+    color:                  black;
+    height:                 40px;
+    line-height:            40px;
+    box-sizing:             border-box;
+    background-color:       #FAFAFA;
+    text-align:             left;
+    padding-left:           50px;
+}
+
+.country-combobox-item:nth-child(even) {
+    border-top:             1px solid #687d93;
+    border-bottom:          1px solid #687d93;
+}
+
+.country-combobox-item:hover {
+    background-color:       #EEEEEE;
+}

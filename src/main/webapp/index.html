@@ -4,31 +4,24 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/md-components.css">
     <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/preloader.css">
 
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
     <script src="js/highcharts.js"></script>
 
-    <style>
-
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            font-family: Roboto;
-            height: 100%;
-            background-color: #EEEEEE;
-        }
-
-    </style>
 </head>
 <body>
     <div class="hover">
     </div>
 
+    <div class="preloader">
+        <div class="md-preloader"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="75" width="75" viewbox="0 0 75 75"><circle cx="37.5" cy="37.5" r="33.5" stroke-width="8"/></svg></div>
+    </div>
     <!----------------------------------------------------------------------->
 
     <div class="modal_form modal_form_country">
@@ -181,7 +174,7 @@
             </div>
         </div>
 
-        <div class="indecies-container">
+        <!--<div class="indecies-container">
 
             <div class="wrap-indecies">
 
@@ -189,136 +182,62 @@
                     <div>Соединённое Королевство</div>
                 </div>
 
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
-
-                <div class="index-card">
-                    <div>Соединённое Королевство</div>
-                </div>
             </div>
 
             <button class="add-new-index">+</button>
+        </div>-->
+
+
+        <div class="compare-container">
+
+            <div class="compare-options-container">
+
+                <div class="option">
+
+                    <select name="indecies-list" id="" class="common-combobox box-indices-list">
+                        <option value="1" class="common-option index">Показатель 1</option>
+                        <option value="2" class="common-option index">Показатель 2</option>
+                        <option value="3" class="common-option index">Показатель 3</option>
+                        <option value="4" class="common-option index">Показатель 4</option>
+                    </select>
+
+                </div>
+
+                <div class="option">
+
+                    <div class="country-combobox country-one"></div>
+
+                    <div class="country-combobox-list country-one-list">
+                        <div class="country-combobox-item country-one-item" data-uid="130" data-image="Armenia.png"> Армения</div>
+                        <div class="country-combobox-item country-one-item" data-uid="131" data-image="Brazil.png"> Бразилия</div>
+                        <div class="country-combobox-item country-one-item" data-uid="134" data-image="Wales.png"> Уэльс</div>
+                        <div class="country-combobox-item country-one-item" data-uid="132" data-image="Ukraine.png"> Украина</div>
+                        <div class="country-combobox-item country-one-item" data-uid="133" data-image="United-Nations.png">ООН</div>
+                    </div>
+
+                </div>
+
+                <div class="option">
+
+                    <div class="country-combobox country-two"></div>
+
+                    <div class="country-combobox-list country-two-list">
+                        <div class="country-combobox-item country-two-item" data-uid="130" data-image="Armenia.png"> Армения</div>
+                        <div class="country-combobox-item country-two-item" data-uid="131" data-image="Brazil.png"> Бразилия</div>
+                        <div class="country-combobox-item country-two-item" data-uid="134" data-image="Wales.png"> Уэльс</div>
+                        <div class="country-combobox-item country-two-item" data-uid="132" data-image="Ukraine.png"> Украина</div>
+                        <div class="country-combobox-item country-two-item" data-uid="133" data-image="United-Nations.png">ООН</div>
+                    </div>
+
+                </div>
+
+                <div class="option compare-button">Сравнить</div>
+
+            </div>
+
+
+            <div id="container" class="chart"></div>
+
         </div>
 
     </div>
@@ -370,7 +289,7 @@
                             lineWidth: 0
                         }
                     },
-                    enableMouseTracking: false
+                    enableMouseTracking: true
                 }, {
                     type: 'scatter',
                     name: 'Observations',
@@ -378,6 +297,19 @@
                     marker: {
                         radius: 4
                     }
+                }, {
+                    type: 'line',
+                    name: 'Regression Line 2',
+                    data: [ [0,1],  [1, 2], [2, 3], [2.5, 7] ],
+                    marker: {
+                        enabled: true
+                    },
+                    states: {
+                        hover: {
+                            lineWidth: 0
+                        }
+                    },
+                    enableMouseTracking: true
                 }]
             });
         });
