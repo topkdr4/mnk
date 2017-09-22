@@ -27,8 +27,8 @@
                 stopLoader();
             },
             error: function(data) {
-                cb(data);
                 stopLoader();
+                cb(data);
             }
         });
     };

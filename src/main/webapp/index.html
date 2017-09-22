@@ -215,14 +215,16 @@
 
 
             var myChart = Highcharts.chart('container', {
-                xAxis: {
-                    min: -0.5
+                credits: {
+                    enabled: false
+                },xAxis: {
+                    min: 0
                 },
                 yAxis: {
                     min: 0
                 },
                 title: {
-                    text: 'Scatter plot with regression line'
+                    text: 'Модель линейной регрессии'
                 },
                 series: [{
                     type: 'line',
