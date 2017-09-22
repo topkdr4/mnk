@@ -13,7 +13,7 @@
 
 .menu > .header {
     height:                 150px;
-    background:             #37474F url("../icons/account.svg") no-repeat center 65%;
+    background:             #37474F url("../icons/account.svg") no-repeat center center;
 }
 
 
@@ -52,35 +52,35 @@
 }
 
 .item[id="home"] {
-    background:             #546E7A url(../icons/to_home_white.svg) no-repeat 25% 50%;
+    background:             #546E7A url(../icons/to_home_white.svg) no-repeat 10% 50%;
 }
 
 .item[id="home"]:hover {
-    background:             #546E7A url(../icons/to_home_black.svg) no-repeat 25% 50%;
+    background:             #546E7A url(../icons/to_home_black.svg) no-repeat 10% 50%;
 }
 
 .item[id="indices"] {
-    background:             #546E7A url(../icons/indecies_white.png) no-repeat 25% 50%;
+    background:             #546E7A url(../icons/indecies_white.png) no-repeat 10% 50%;
 }
 
 .item[id="indices"]:hover {
-    background:             #546E7A url(../icons/indecies_black.svg) no-repeat 25% 50%;
+    background:             #546E7A url(../icons/indecies_black.svg) no-repeat 10% 50%;
 }
 
 .item[id="countries"] {
-    background:             #546E7A url(../icons/country_white.svg) no-repeat 25% 50%;
+    background:             #546E7A url(../icons/country_white.svg) no-repeat 10% 50%;
 }
 
 .item[id="countries"]:hover {
-    background:             #546E7A url(../icons/country_black.svg) no-repeat 25% 50%;
+    background:             #546E7A url(../icons/country_black.svg) no-repeat 10% 50%;
 }
 
 .item[id="compare"] {
-    background:             #546E7A url(../icons/compare_white.png) no-repeat 25% 50%;
+    background:             #546E7A url(../icons/compare_white.png) no-repeat 10% 50%;
 }
 
 .item[id="compare"]:hover {
-    background:             #546E7A url(../icons/compare_black.png) no-repeat 25% 50%;
+    background:             #546E7A url(../icons/compare_black.png) no-repeat 10% 50%;
 }
 
 /*----------*/
@@ -274,6 +274,10 @@ button:focus:not(:active)::after {
 
 .chart {
     height:                 95%;
+}
+
+.remove-country:hover {
+    color:                  #ff5252;
 }
 
 /*--------*/

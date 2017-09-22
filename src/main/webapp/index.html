@@ -53,7 +53,6 @@
 
     <div class="menu">
         <div class="header">
-            <div class="color_block"></div>
         </div>
 
         <div id="home" class="item">Главная</div>
@@ -69,8 +68,8 @@
 
         <!--  Country information  -->
 
-        <!--<div class="country-detail">
-            &lt;!&ndash;<div class="tab-container">
+        <div class="country-detail">
+            <div class="tab-container">
                 <div class="tab graph">График</div>
                 <div class="tab table tab-active">Таблица</div>
                 <div class="tab">
@@ -81,11 +80,11 @@
                         <option value="" class="common-option">Показатель 4</option>
                     </select>
                 </div>
-            </div>&ndash;&gt;
+            </div>
 
-            &lt;!&ndash;<div id="container" class="chart"></div>&ndash;&gt;
+            <!--<div id="container" class="chart"></div>-->
 
-            &lt;!&ndash;<div class="country-table md-table">
+            <!--<div class="country-table md-table">
                 <table>
 
                     <tr class="header-line">
@@ -105,8 +104,8 @@
                     </tr>
 
                 </table>
-            </div>&ndash;&gt;
-        </div>-->
+            </div>-->
+        </div>
 
         <!--Indecies list-->
 
@@ -134,8 +133,9 @@
             <button class="add-new-index">+</button>
         </div>-->
 
+        <!-- Compare -->
 
-        <div class="compare-container">
+        <!--<div class="compare-container">
 
             <div class="compare-options-container">
 
@@ -185,83 +185,11 @@
 
             <div id="container" class="chart"></div>
 
-        </div>
+        </div>-->
 
     </div>
 
     <script>
-
-        $(function () {
-            var values = {"result":[{"valueY":8.0,"valueX":1.0,"uid":0},{"valueY":6.0,"valueX":2.0,"uid":0},{"valueY":10.0,"valueX":3.0,"uid":0},{"valueY":6.0,"valueX":4.0,"uid":0},{"valueY":10.0,"valueX":5.0,"uid":0},{"valueY":13.0,"valueX":6.0,"uid":0},{"valueY":9.0,"valueX":7.0,"uid":0},{"valueY":11.0,"valueX":8.0,"uid":0},{"valueY":15.0,"valueX":9.0,"uid":0},{"valueY":17.0,"valueX":10.0,"uid":0}],"errorCode":0,"errorText":null};
-            values = values.result;
-            var obj = {"result":[{"valueX":1.0,"valueY":6.109090909090909,"uid":0},{"valueX":2.0,"valueY":7.084848484848485,"uid":0},{"valueX":3.0,"valueY":8.06060606060606,"uid":0},{"valueX":4.0,"valueY":9.036363636363637,"uid":0},{"valueX":5.0,"valueY":10.012121212121212,"uid":0},{"valueX":6.0,"valueY":10.987878787878788,"uid":0},{"valueX":7.0,"valueY":11.963636363636365,"uid":0},{"valueX":8.0,"valueY":12.93939393939394,"uid":0},{"valueX":9.0,"valueY":13.915151515151514,"uid":0},{"valueX":10.0,"valueY":14.89090909090909,"uid":0}],"errorCode":0,"errorText":null};
-            obj = obj.result;
-
-            var data = [];
-            values.forEach(function (item) {
-                var dd = [];
-                dd.push(item.valueX);
-                dd.push(item.valueY);
-                data.push(dd)
-            });
-
-            var regression = [];
-            obj.forEach(function(item) {
-                var rr = [];
-                rr.push(item.valueX);
-                rr.push(item.valueY);
-                regression.push(rr);
-            });
-
-
-            var myChart = Highcharts.chart('container', {
-                credits: {
-                    enabled: false
-                },xAxis: {
-                    min: 0
-                },
-                yAxis: {
-                    min: 0
-                },
-                title: {
-                    text: 'Модель линейной регрессии'
-                },
-                series: [{
-                    type: 'line',
-                    name: 'Regression Line',
-                    data: regression,
-                    marker: {
-                        enabled: true
-                    },
-                    states: {
-                        hover: {
-                            lineWidth: 0
-                        }
-                    },
-                    enableMouseTracking: true
-                }, {
-                    type: 'scatter',
-                    name: 'Observations',
-                    data: data,
-                    marker: {
-                        radius: 4
-                    }
-                }, {
-                    type: 'line',
-                    name: 'Regression Line 2',
-                    data: [ [0,1],  [1, 2], [2, 3], [2.5, 7] ],
-                    marker: {
-                        enabled: true
-                    },
-                    states: {
-                        hover: {
-                            lineWidth: 0
-                        }
-                    },
-                    enableMouseTracking: true
-                }]
-            });
-        });
 
         $('.checkbox').on('click', function(e) {
             $(this).toggleClass('no_check');
