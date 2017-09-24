@@ -72,6 +72,7 @@ public final class ValueService {
             ResultSet set = (ResultSet) statement.getObject(1);
             while (set.next()) {
                 Value value = new Value(set.getDouble(1), set.getDouble(2));
+                value.setUid(set.getInt(3));
                 result.add(value);
             }
 

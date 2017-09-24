@@ -177,7 +177,7 @@ DECLARE
 	res refcursor;
 
 BEGIN
-	open res for select value_x, value_y from t_values where country_uid = p_uid_country and index_uid = p_uid_index;
+	open res for select value_x, value_y, uid from t_values where country_uid = p_uid_country and index_uid = p_uid_index;
 	return res;
 END; $BODY$
   LANGUAGE plpgsql VOLATILE

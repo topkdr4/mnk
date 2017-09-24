@@ -62,7 +62,7 @@ $(function() {
                 class: 'tab table',
                 text: 'Таблица'
             })).append($('<div/>', {
-                class: 'tab'
+                class: 'tab combo-tab'
             }).append($('<select/>', {
                 name: 'indecies-list',
                 class: 'common-combobox'
@@ -106,6 +106,131 @@ $(function() {
             });
         });
     };
+
+
+    $('.container').on('click', '.tab', function(e) {
+        var that = $(this);
+        if (that.hasClass("tab-active") || that.hasClass("combo-tab"))
+            return;
+
+        $('#container').remove();
+        $('.country-table').remove();
+
+        $('.tab-active').removeClass("tab-active");
+        that.addClass("tab-active");
+
+        if (that.hasClass('graph')) {
+            showGraph();
+        }
+
+        if (that.hasClass('table')) {
+            showTable();
+        }
+    });
+
+    function showTable() {
+        var combobox = $('.common-combobox');
+        var countryUid = combobox.find('option').eq(0).attr('data-country-uid');
+        var indexUid   = combobox.val();
+        showTable0(countryUid, indexUid);
+    }
+
+    function showTable0(countryUid, indexUid) {
+        App.send("/webapi/value/list", {
+            countryUid: countryUid,
+            indexUid:indexUid
+        }, function(values) {
+            var root = $('<div/>', {
+                class: 'country-table md-table'
+            });
+
+            var table = $('<table/>');
+            appendHeaderLine(table);
+            values.result.forEach(function(item) {
+                appendLine(table, item);
+            });
+
+            root.append(table);
+            $('.country-detail').append(root);
+        });
+    }
+
+    function appendHeaderLine(table) {
+        var tr = $('<tr/>');
+        for (var i = 0; i < 5; i++) {
+            var th = $('<th/>');
+            switch (i) {
+                case 1:
+                    th.text('Значение по Х');
+                    break;
+                case 2:
+                    th.text('Значение по Y');
+                    break;
+            }
+            tr.append(th);
+        }
+
+        table.append(tr);
+    }
+
+
+    function appendLine(table, data) {
+        table.append($('<tr/>').append($('<td/>', {
+            class: 'checkbox no_check'
+        })).append($('<td/>', {
+            class: 'x-value',
+            text:  data.valueX
+        })).append($('<td/>', {
+            class: 'y-value',
+            text:  data.valueY
+        })).append($('<td/>', {
+            class: 'save-value'
+        }).attr({
+            'data-uid': data.uid
+        })).append($('<td/>', {
+            class: 'remove-value'
+        }).attr({
+            'data-uid': data.uid
+        })));
+    }
+
+    function showGraph() {
+        var combobox = $('.common-combobox');
+        var countryUid = combobox.find('option').eq(0).attr('data-country-uid');
+        var indexUid   = combobox.val();
+        showGraph0(countryUid, indexUid);
+    }
+
+    function showGraph0(countryUid, indexUid) {
+        App.send("/webapi/value/analytic", {
+            countryUid: countryUid,
+            indexUid: indexUid
+        }, function (data) {
+            App.send("/webapi/value/list", {
+                countryUid: countryUid,
+                indexUid:indexUid
+            }, function(values) {
+                Controller.setGraph(data, values);
+            });
+        });
+    }
+
+
+    $('.container').on('change', '.common-combobox', function(e) {
+        var active = $('.tab-active');
+
+        if (active.hasClass('graph')) {
+            $('#container').remove();
+            $('.country-table').remove();
+            showGraph();
+        }
+
+        if (active.hasClass('table')) {
+            $('#container').remove();
+            $('.country-table').remove();
+            showTable();
+        }
+    });
 
     Controller.setGraph = function(regression, values) {
         var data = [];
@@ -152,7 +277,7 @@ $(function() {
                 enableMouseTracking: false
             }, {
                 type: 'scatter',
-                name: 'Observations',
+                name: 'Исходные данные',
                 data: data,
                 marker: {
                     radius: 4
