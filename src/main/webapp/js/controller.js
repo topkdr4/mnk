@@ -370,5 +370,22 @@ $(function() {
         });
     });
 
+    $('.container').on('click', '.checkbox', function(e) {
+        $(this).toggleClass('no_check');
+        $(this).toggleClass('check');
+    });
+
+    $('container').contextmenu(function(e) {
+        e.preventDefault();
+    });
+
+    var setValue = function() {
+        var result = prompt('Новое значение', null);
+        $(this).text(result);
+    };
+
+    $('.container').on('dblclick', '.x-value', setValue);
+    $('.container').on('dblclick', '.y-value', setValue);
+
     window.Controller = Controller;
 });

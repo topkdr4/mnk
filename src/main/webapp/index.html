@@ -148,25 +148,5 @@
 
     </div>
 
-    <script>
-
-        $('.checkbox').on('click', function(e) {
-            $(this).toggleClass('no_check');
-            $(this).toggleClass('check');
-        });
-
-        $('table').contextmenu(function(e) {
-            e.preventDefault();
-        });
-
-        var setValue = function() {
-            var result = prompt('Новое значение', null);
-            $(this).text(result);
-        };
-
-        $('.x-value').on('dblclick', setValue);
-        $('.y-value').on('dblclick', setValue);
-
-    </script>
 </body>
 </html>
