@@ -113,9 +113,6 @@ $(function() {
         if (that.hasClass("tab-active") || that.hasClass("combo-tab"))
             return;
 
-        $('#container').remove();
-        $('.country-table').remove();
-
         $('.tab-active').removeClass("tab-active");
         that.addClass("tab-active");
 
@@ -129,6 +126,9 @@ $(function() {
     });
 
     function showTable() {
+        $('#container').remove();
+        $('.country-table').remove();
+
         var combobox = $('.common-combobox');
         var countryUid = combobox.find('option').eq(0).attr('data-country-uid');
         var indexUid   = combobox.val();
@@ -195,6 +195,8 @@ $(function() {
     }
 
     function showGraph() {
+        $('#container').remove();
+        $('.country-table').remove();
         var combobox = $('.common-combobox');
         var countryUid = combobox.find('option').eq(0).attr('data-country-uid');
         var indexUid   = combobox.val();
@@ -380,12 +382,30 @@ $(function() {
     });
 
     var setValue = function() {
-        var result = prompt('Новое значение', null);
-        $(this).text(result);
+        var parent = $(this).parent();
+        var check  = parent.find('.checkbox');
+        if (!check.hasClass('check'))
+            return;
+
+        var result = prompt('Новое значение', '');
+        $(this).text(parseFloat(result));
     };
 
     $('.container').on('dblclick', '.x-value', setValue);
     $('.container').on('dblclick', '.y-value', setValue);
+
+    $('.container').on('click', '.save-value', function (e) {
+        var uid = $(this).attr('data-uid');
+        var parent = $(this).parent();
+        var x = parent.find('.x-value');
+        var y = parent.find('.y-value');
+        App.send('/webapi/value/update', {uid: uid, x: x.text(), y: y.text()}, function() {});
+    });
+
+    $('.container').on('click', '.remove-value', function (e) {
+        var uid = $(this).attr('data-uid');
+        App.send('/webapi/value/remove', {uid: uid}, showTable);
+    });
 
     window.Controller = Controller;
 });
