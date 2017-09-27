@@ -59,5 +59,19 @@
 
 /*************************/
 .modal_form_index, .modal_form_country {
-    display:                 none;
+    display:                none;
+}
+
+
+/*************************/
+.modal_form_value {
+    display:                none;
+}
+
+.modal-x-value, .modal-y-value {
+    margin-left:            10px;
+}
+
+.modal-bad-value {
+    border-bottom:          2px solid #d50000;
 }

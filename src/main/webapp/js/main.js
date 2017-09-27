@@ -187,4 +187,75 @@ jQuery(function(global) {
         Controller.showCountryInfo($(this).attr('data-uid'));
     });
 
+
+    /* Добавление новго значение модалка */
+    $('.show_modal_form_value').on('click', function(e) {
+        restoreModalValue();
+        $('body').css({
+            'overflow': 'hidden'
+        });
+        $('.hover').show();
+        $('.modal_form_value').show();
+    });
+
+    $('.value-modal-close').on('click', function(e) {
+        $('.modal_form_value').fadeOut();
+        $('.hover').hide();
+
+        $('body').css({
+            'overflow': 'auto'
+        });
+    });
+
+    function restoreModalValue() {
+        $('.modal-value').each(function() {
+            var current = $(this);
+            current.val('');
+            current.removeClass('modal-bad-value');
+        });
+    }
+
+    $('.value-modal-add').on('click', function(e) {
+        var xField = $('.modal-x-value');
+        var yField = $('.modal-y-value');
+
+        var x = parseFloat(xField.val());
+        var y = parseFloat(yField.val());
+
+        var valid = true;
+
+        if (Number.isNaN(x)) {
+            valid = false;
+            xField.addClass('modal-bad-value');
+        } else {
+            xField.val(x);
+            xField.removeClass('modal-bad-value');
+        }
+
+        if (Number.isNaN(y)) {
+            valid = false;
+            yField.addClass('modal-bad-value');
+        } else {
+            yField.val(y);
+            yField.removeClass('modal-bad-value');
+        }
+
+        if (!valid)
+            return;
+
+        var combobox = $('.common-combobox');
+        var countryUid = combobox.find('option').eq(0).attr('data-country-uid');
+        var indexUid   = combobox.val();
+
+        App.send('/webapi/value/add', {
+            countryUid: countryUid,
+            indexUid: indexUid,
+            valueX: x,
+            valueY: y
+        }, function() {
+            $('.hover').click();
+            Controller.showTable();
+        });
+    });
+
 });

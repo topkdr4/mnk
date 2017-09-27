@@ -125,6 +125,10 @@ $(function() {
         }
     });
 
+    Controller.showTable = function() {
+        showTable();
+    }
+
     function showTable() {
         $('#container').remove();
         $('.country-table').remove();
