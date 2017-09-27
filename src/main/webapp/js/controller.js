@@ -132,7 +132,7 @@ $(function() {
     function showTable() {
         $('#container').remove();
         $('.country-table').remove();
-
+        $('.show_modal_form_value').remove();
         var combobox = $('.common-combobox');
         var countryUid = combobox.find('option').eq(0).attr('data-country-uid');
         var indexUid   = combobox.val();
@@ -156,6 +156,10 @@ $(function() {
 
             root.append(table);
             $('.country-detail').append(root);
+            $('.country-detail').append($('<button/>'), {
+                class: 'show_modal_form_value',
+                text: '+'
+            });
         });
     }
 
