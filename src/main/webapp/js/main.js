@@ -189,7 +189,7 @@ jQuery(function(global) {
 
 
     /* Добавление новго значение модалка */
-    $('.show_modal_form_value').on('click', function(e) {
+    $('.container').on('click', '.show_modal_form_value', function(e) {
         restoreModalValue();
         $('body').css({
             'overflow': 'hidden'
