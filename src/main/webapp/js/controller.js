@@ -358,7 +358,33 @@ $(function() {
             class: 'index-card'
         }).append($('<div/>', {
             text: item.name
-        }));
+        })).hover(function(e) {
+            var current = $(this);
+            var id = item.uid;
+            var removeButton = $('<input/>', {
+                type: 'button',
+                class: 'select-for-delete',
+                val:   'x'
+            });
+
+            removeButton.hover(function(e) {
+                current.css({
+                    'border': '2px solid #b71c1c'
+                });
+            }, function(e) {
+                current.css({
+                'border': '2px solid #FAFAFA'
+                });
+            });
+
+            removeButton.on('click', function(e) {
+                console.log('remove', id);
+            });
+
+            current.append(removeButton);
+        }, function(e) {
+            $('.select-for-delete').off().remove();
+        });;
     }
 
 
