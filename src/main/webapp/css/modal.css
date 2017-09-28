@@ -68,7 +68,7 @@
     display:                none;
 }
 
-.modal-x-value, .modal-y-value {
+.modal-x-value, .modal-y-value, .index-name {
     margin-left:            10px;
 }
 

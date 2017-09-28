@@ -44,7 +44,34 @@ $(function() {
                     background: 'url(' + country.url + ') no-repeat left 40%'
                 }).attr({
                     'data-uid': country.id
-                })).appendTo($('.wrap-countries'));
+                })).hover(function(e) {
+                    var current = $(this);
+                    var removeButton = $('<input/>', {
+                        type: 'button',
+                        class: 'select-for-delete',
+                        val:   'x'
+                    });
+
+                    removeButton.hover(function(e) {
+                        current.css({
+                            'border': '2px solid #b71c1c'
+                        });
+                    }, function(e) {
+                        current.css({
+                            'border': '2px solid #FAFAFA'
+                        });
+                    });
+
+                    removeButton.on('click', function(e) {
+                    App.send("/webapi/country/remove", { uid: country.id }, function(data) {
+                            $('#countries').click();
+                        });
+                    });
+
+                    current.append(removeButton);
+                }, function(e) {
+                    $('.select-for-delete').off().remove();
+                }).appendTo($('.wrap-countries'));
             });
         });
     };
@@ -66,16 +93,7 @@ $(function() {
             }).append($('<select/>', {
                 name: 'indecies-list',
                 class: 'common-combobox'
-            }))).append($('<div/>', {
-                class: 'tab remove-country',
-                text: 'Удалить страну'
-            }).on('click', function(e) {
-                App.send("/webapi/country/remove", {
-                    uid: uid
-                }, function(data) {
-                    $('#countries').click();
-                });
-            }))
+            })))
         ).appendTo(container);
 
         App.send("/webapi/index/list", {}, function (data) {
@@ -156,10 +174,10 @@ $(function() {
 
             root.append(table);
             $('.country-detail').append(root);
-            $('.country-detail').append($('<button/>'), {
+            $('.country-detail').append($('<button/>', {
                 class: 'show_modal_form_value',
                 text: '+'
-            });
+            }));
         });
     }
 
@@ -335,10 +353,37 @@ $(function() {
     });
 
 
-    $('#indices').on('click', function() {
+    function createIndex(item) {
+        return $('<div/>', {
+            class: 'index-card'
+        }).append($('<div/>', {
+            text: item.name
+        }));
+    }
+
+
+    Controller.showIndeciesList = function() {
         container.clear(function () {
-            
+            var indeciesContainer = $('<div/>', { class: 'indecies-container' });
+            var wrap = $('<div/>', { class: 'wrap-indecies' });
+
+            App.send('/webapi/index/list', {}, function(data) {
+                data.result.forEach(function(item) {
+                    wrap.append(createIndex(item));
+                });
+            });
+
+            indeciesContainer.append(wrap).append($('<button/>', {
+                class: 'add-new-index',
+                text:  '+'
+            }));
+            container.append(indeciesContainer);
         });
+    }
+
+
+    $('#indices').on('click', function() {
+        Controller.showIndeciesList();
     });
 
 

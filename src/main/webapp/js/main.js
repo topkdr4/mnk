@@ -66,7 +66,8 @@ jQuery(function(global) {
 
 
     //****************************************************************************
-    $('.add-new-index').on('click', function() {
+    $('.container').on('click', '.add-new-index', function() {
+        setDefaultIndexForm();
         $('.hover').show();
         $('.modal_form_index').show();
     });
@@ -74,6 +75,27 @@ jQuery(function(global) {
     $('.index-abort').on('click', function() {
         $('.modal_form_index').fadeOut();
         $('.hover').hide();
+    });
+
+    function setDefaultIndexForm() {
+        var field = $('.index-name');
+        field.val('');
+        field.removeClass('bad-value');
+    }
+
+    $('.add-index').on('click', function(e) {
+        var field = $('.index-name');
+        if (field.val().trim() == '') {
+            field.addClass('bad-value');
+            return;
+        }
+
+        App.send('/webapi/index/add', {
+            name: field.val()
+        }, function(data) {
+            Controller.showIndeciesList();
+            $('.index-abort').click();
+        });
     });
 
     //****************************************************************************
