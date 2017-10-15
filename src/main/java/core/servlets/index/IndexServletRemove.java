@@ -51,7 +51,7 @@ public class IndexServletRemove implements HttpHandler{
             throw new ServiceException("Index by uid = `" + uid + "` not found");
     
         IndexService.remove(findIndex);
-        log.info("removed country: " + findIndex.getName());
+        log.info("removed index: " + findIndex.getName());
         return SimpleAnswer.EMPTY;
     }
 }

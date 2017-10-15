@@ -372,16 +372,16 @@ th {
 }
 
 .index-card {
-    border-radius:          1px;
+    border-radius:          2px;
     width:                  240px;
-    height:                 80px;
+    height:                 40px;
     background-color:       #FAFAFA;
     transition:             box-shadow  0.2s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow:             0 2px 5px 0 rgba(0, 0, 0, 0.26);
     padding:                10px;
     margin:                 10px;
-    display:                table;
-    text-align:             center;
+    display:                flex;
+    justify-content:        center;
     user-select:            none;
     cursor:                 default;
 }
@@ -480,7 +480,7 @@ th {
 }
 
 /****************************/
-.select-for-delete {
+.select-for-delete, .rm-index {
     box-sizing:             border-box;
     border:                 1px solid #FAFAFA;
     position:               absolute;
@@ -498,7 +498,13 @@ th {
     color:                  #EEEEEE;
 }
 
-.select-for-delete:hover {
+.rm-index {
+    margin:                 -10px 60px;
+    background-color:       #FAFAFA;
+    position:               absolute;
+}
+
+.select-for-delete:hover, .rm-index:hover {
     background-color:       #b71c1c;
     border:                 1px solid #b71c1c;
     color:                  white;

@@ -12,7 +12,6 @@ $(function() {
 
     function Controller () {}
 
-
     Controller.setContentCountryList = function() {
         $('<div/>', {
             class: 'country_search'
@@ -125,7 +124,6 @@ $(function() {
         });
     };
 
-
     $('.container').on('click', '.tab', function(e) {
         var that = $(this);
         if (that.hasClass("tab-active") || that.hasClass("combo-tab"))
@@ -145,7 +143,7 @@ $(function() {
 
     Controller.showTable = function() {
         showTable();
-    }
+    };
 
     function showTable() {
         $('#container').remove();
@@ -199,7 +197,6 @@ $(function() {
         table.append(tr);
     }
 
-
     function appendLine(table, data) {
         table.append($('<tr/>').append($('<td/>', {
             class: 'checkbox no_check'
@@ -242,7 +239,6 @@ $(function() {
             });
         });
     }
-
 
     $('.container').on('change', '.common-combobox', function(e) {
         var active = $('.tab-active');
@@ -314,7 +310,6 @@ $(function() {
         });
     };
 
-
     $('#home').on('click', function() {
 
         container.clear(function () {
@@ -347,23 +342,19 @@ $(function() {
         });
     });
 
-
     $('#countries').on('click', function() {
         container.clear(Controller.setContentCountryList);
     });
 
-
     function createIndex(item) {
         return $('<div/>', {
-            class: 'index-card'
-        }).append($('<div/>', {
+            class: 'index-card',
             text: item.name
-        })).hover(function(e) {
+        }).hover(function(e) {
             var current = $(this);
-            var id = item.uid;
             var removeButton = $('<input/>', {
                 type: 'button',
-                class: 'select-for-delete',
+                class: 'rm-index',
                 val:   'x'
             });
 
@@ -373,20 +364,23 @@ $(function() {
                 });
             }, function(e) {
                 current.css({
-                'border': '2px solid #FAFAFA'
+                    'border': '2px solid #FAFAFA'
                 });
             });
 
             removeButton.on('click', function(e) {
-                console.log('remove', id);
+                App.send('/webapi/index/remove', {
+                    uid: item.uid
+                }, function (data) {
+                    Controller.showIndeciesList();
+                });
             });
 
             current.append(removeButton);
         }, function(e) {
-            $('.select-for-delete').off().remove();
-        });;
+            $('.rm-index').off().remove();
+        });
     }
-
 
     Controller.showIndeciesList = function() {
         container.clear(function () {
