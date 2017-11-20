@@ -22,6 +22,7 @@
             url: url,
             data: data,
             type: 'POST',
+            async: false,
             success: function(data) {
                 cb(data);
                 stopLoader();

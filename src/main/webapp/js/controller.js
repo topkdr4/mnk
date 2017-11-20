@@ -1,6 +1,3 @@
-/**
- * menu controller
- * */
 $(function() {
     "use strict";
 
@@ -408,16 +405,86 @@ $(function() {
 
 
     $('#compare').on('click', function() {
+        // return;
         container.clear(function () {
-            
+            $('<div/>', {
+                class: 'compare-container'
+            }).append(appendContent())
+                .append($('<div/>', {
+                    class: 'chart'
+                }).attr({id: 'container'}))
+                .appendTo(container);
         });
+
+        Controller.renderOneList();
+        Controller.renderTwoList();
+
+        function appendContent() {
+            var indisies;
+            App.send("/webapi/index/list", {}, function(result) {
+                indisies = result.result;
+            });
+
+            var countries;
+            App.send("/webapi/country/list", {}, function(result) {
+                countries = result.result;
+            });
+
+            return $('<div/>', {
+                class: 'compare-options-container'
+            }).append(appendIndisies(indisies)).append(appendCountries(countries, true)).append(appendCountries(countries, false)).append($('<div/>', {class: 'option compare-button'}).text('Сравнить'));
+        }
+
+        function appendIndisies(indisies) {
+            var result = $('<div/>', {
+                class: 'option'
+            });
+
+            var root = $('<select/>', {
+                class: 'common-combobox box-indices-list'
+            }).attr({name: 'indecies-list'});
+            indisies.forEach(function(item) {
+                $('<option/>', {
+                    class: 'common-option index'
+                }).attr({
+                    value: item.uid
+                }).text(item.name).appendTo(root);
+            });
+
+            root.appendTo(result);
+            return result;
+        }
+
+        function appendCountries(countries, isFirst) {
+            var result = $('<div/>', {
+                class: 'option'
+            }).append($('<div/>', {
+                class: isFirst ? 'country-combobox country-one' : 'country-combobox country-two'
+            }));
+
+            var root = $('<div/>', {
+                class: isFirst ? 'country-combobox-list country-one-list' : 'country-combobox-list country-two-list'
+            });
+
+            result.append(root);
+            countries.forEach(function(item) {
+                $('<div/>', {
+                    class: isFirst ? 'country-combobox-item country-one-item' : 'country-combobox-item country-two-item'
+                }).attr({
+                    'data-uid':   item.id,
+                    'data-image': item.url
+                }).text(item.name).appendTo(root);
+            });
+
+            return result;
+        }
+
     });
 
     App.send("/image/list", {}, function(data) {
         var list = $('.md-combobox-list').empty();
         data.result.forEach(function (item) {
             var value = item.split('\\').join('/');
-
             $('<div/>', {
                 class: 'md-combobox-item'
             }).attr({
